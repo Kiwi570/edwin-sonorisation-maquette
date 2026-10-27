@@ -1,8 +1,8 @@
 // Accueil (Face A)
-import { state, on, $, $$, setMood, MOODS } from '../core/state.js?v=20261027';
-import { setSound, audio } from '../core/deck.js?v=20261027';
-import { initZoneBlock } from '../core/zonemap.js?v=20261027';
-import { initAnimToys } from '../core/anims.js?v=20261027';
+import { state, on, $, $$, setMood, MOODS } from '../core/state.js';
+import { setSound, audio } from '../core/deck.js';
+import { initZoneBlock } from '../core/zonemap.js';
+import { initAnimToys } from '../core/anims.js';
 
 export default function home() {
   const { gsap, ScrollTrigger } = window;
@@ -17,7 +17,7 @@ export default function home() {
   if (!state.calm) {
     gsap.set(lines, { yPercent: 110 });
     gsap.set([kicker, ...fades], { opacity: 0, y: 24 });
-    import('../gl/vinyl.js?v=20261027').then(({ initVinyl }) => {
+    import('../gl/vinyl.js').then(({ initVinyl }) => {
       vinyl = initVinyl($('[data-vinyl-gl]', hero));
       if (!vinyl) startFallbackSpin();
       if (introDone && vinyl) vinyl.intro(0);
@@ -66,8 +66,10 @@ export default function home() {
     mm.add('(min-width: 900px)', () => {
       evSec.classList.add('is-pinned');
       const dist = () => track.scrollWidth - window.innerWidth;
+      // Toute la section reste épinglée (titre visible) ; le défilement est raccourci d'un tiers
+      const fits = () => evSec.offsetHeight <= window.innerHeight;
       const tween = gsap.to(track, { x: () => -dist(), ease: 'none', scrollTrigger: {
-        trigger: '[data-events-pin]', start: 'center 52%', end: () => `+=${dist()}`, pin: '[data-events-pin]', scrub: 0.6, invalidateOnRefresh: true, anticipatePin: 1,
+        trigger: evSec, start: () => (fits() ? 'top top' : 'bottom bottom'), end: () => `+=${Math.round(dist() * 0.65)}`, pin: true, scrub: 0.6, invalidateOnRefresh: true, anticipatePin: 1,
         onUpdate: (st) => setCount(st.progress),
       } });
       evs.forEach((ev) => {
@@ -122,18 +124,4 @@ export default function home() {
   /* ---------- A6 : carte radar ---------- */
   const zone = $('#zone');
   if (zone) initZoneBlock(zone);
-
-  /* ---------- A7 : bac de disques ---------- */
-  const crate = $('[data-crate]');
-  if (crate && !state.calm) {
-    const recs = $$('.rec', crate);
-    gsap.from(recs, { yPercent: 70, opacity: 0, stagger: 0.09, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: crate, start: 'top 75%', once: true } });
-    if (state.finePointer) {
-      crate.addEventListener('pointermove', (e) => {
-        const r = crate.getBoundingClientRect(); const px = (e.clientX - r.left) / r.width;
-        recs.forEach((rec, i) => { const d = Math.abs(px - (0.04 + i * 0.17 + 0.19)); gsap.to(rec, { y: d < 0.1 ? -40 : 0, duration: 0.5, ease: 'power3.out' }); });
-      });
-      crate.addEventListener('pointerleave', () => gsap.to(recs, { y: 0, duration: 0.6, ease: 'power3.out' }));
-    }
-  }
 }

@@ -1,6 +1,6 @@
 // Mini-jeux des cartes « Animations » (karaoké, chaises musicales, buzzer de quiz)
-import { state, $, $$ } from './state.js?v=20261027';
-import { audio } from './audio.js?v=20261027';
+import { state, $, $$ } from './state.js';
+import { audio } from './audio.js';
 
 export function initAnimToys(root = document) {
   const { gsap, ScrollTrigger } = window;
@@ -15,7 +15,8 @@ export function initAnimToys(root = document) {
 
   const chairs = $('[data-chairs]', root);
   if (chairs) {
-    const svg = '<svg viewBox="0 0 22 26" fill="currentColor" aria-hidden="true"><rect x="3" y="0" width="3" height="16" rx="1"/><rect x="3" y="13" width="16" height="3" rx="1"/><rect x="4" y="16" width="2.4" height="10" rx="1"/><rect x="15.6" y="16" width="2.4" height="10" rx="1"/></svg>';
+    // Chaise vue de trois quarts : dossier, assise, quatre pieds
+    const svg = '<svg viewBox="0 0 26 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2v15M19 2v15M7 5h12M7 10h12"/><path d="M4 17h18l-2 4H6z" fill="currentColor"/><path d="M6 21v9M20 21v9M9 21v6M17 21v6"/></svg>';
     chairs.innerHTML = svg.repeat(7);
     const items = $$('svg', chairs);
     if (!state.calm) {

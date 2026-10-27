@@ -1,7 +1,7 @@
 // Vinyle 3D en WebGL (OGL) : disque incliné, sillons, reflet anisotrope, étiquette qui tourne,
 // faisceaux laser dans la brume. Le défilement « scratche » le disque.
 import { Renderer, Program, Mesh, Triangle, Texture } from '../vendor/ogl.esm.js';
-import { state, on, hexToRgb } from '../core/state.js?v=20261027';
+import { state, on, hexToRgb } from '../core/state.js';
 
 const vertex = /* glsl */ `#version 300 es
 in vec2 uv; in vec2 position; out vec2 vUv;
@@ -217,9 +217,15 @@ export function initVinyl(canvas) {
     for (let i = 0; i < 3; i++) uniforms.uTint.value[i] += (targetTint[i] - uniforms.uTint.value[i]) * 0.06;
     uniforms.uLevel.value = state.level;
     const s = layout.scroll; const k = layout.intro;
-    const baseR = mobile ? Math.min(W * 0.37, H * 0.21) : Math.min(H * 0.37, W * 0.27);
-    const cx = (mobile ? 0.5 : 0.69) * W + (mobile ? 0 : s * W * 0.06);
-    const cy = (mobile ? 0.78 : 0.53) * H + s * H * 0.28; // GL : origine en bas
+    const vh = window.innerHeight;
+    const short = vh < 560 && W > vh; // téléphone à l'horizontale : le disque se range à droite
+    const portrait = mobile && !short && vh >= W;
+    // Téléphone en portrait : le disque occupe l'espace réservé en CSS sous l'en-tête (min(62vw, 30svh))
+    const disc = Math.min(W * 0.62, vh * (vh < 700 ? 0.24 : 0.30));
+    const baseR = short ? vh * 0.34 : portrait ? disc * 0.5 : mobile ? Math.min(W * 0.3, vh * 0.3) : Math.min(vh * 0.37, W * 0.27);
+    const cx = (short ? 0.84 : portrait ? 0.5 : 0.69) * W + (mobile ? 0 : s * W * 0.06);
+    const cyTop = short ? vh * 0.5 : portrait ? 72 + 10 + disc * 0.5 : Math.min(H, vh) * 0.47;
+    const cy = H - cyTop + s * Math.min(H, vh) * 0.28; // GL : origine en bas
     uniforms.uCenter.value = [cx * pr, cy * pr];
     uniforms.uRadius.value = baseR * (0.55 + 0.45 * k) * (1 - s * 0.2) * pr;
     uniforms.uTilt.value = [0.82 + (1 - k) * 0.5 + s * 0.25, -0.28 - (1 - k) * 0.4];

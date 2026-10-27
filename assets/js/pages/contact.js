@@ -1,43 +1,13 @@
-// Contact (Face D) : table de mixage, devis « Construisez votre set », horaires, zone
-import { state, $, $$, SITE } from '../core/state.js?v=20261027';
-import { simpleHero } from '../core/hero-simple.js?v=20261027';
-import { initZoneBlock, communeCombobox, describe, loadZoneData } from '../core/zonemap.js?v=20261027';
-import { audio } from '../core/audio.js?v=20261027';
+// Contact (Face D) : devis en 6 étapes (erreurs sous les champs), horaires, numéro à copier
+import { state, $, $$, SITE, store } from '../core/state.js';
+import { simpleHero } from '../core/hero-simple.js';
+import { communeCombobox, describe, loadZoneData } from '../core/zonemap.js';
+import { scrollToTarget } from '../core/smooth.js';
+import { audio } from '../core/audio.js';
 
 export default function contact() {
   const { gsap } = window;
   simpleHero();
-
-  /* ---------- D0 : table de mixage (faders qu'on peut pousser, vumètres sur le tempo) ---------- */
-  const mixer = $('[data-mixer]');
-  if (mixer) {
-    const N = window.innerWidth < 700 ? 4 : 6;
-    for (let i = 0; i < N; i++) {
-      const ch = document.createElement('div'); ch.className = 'mixer__ch';
-      ch.innerHTML = `<span class="mixer__knob" style="--k:${-60 + i * 22}deg"></span><span class="mixer__knob" style="--k:${20 - i * 15}deg"></span>
-        <span class="mixer__slot"><span class="mixer__cap" style="--f:${20 + ((i * 37) % 55)}%"></span><span class="mixer__meter">${'<i></i>'.repeat(16)}</span></span>`;
-      mixer.appendChild(ch);
-    }
-    const chans = $$('.mixer__ch', mixer).map((ch) => ({ cap: $('.mixer__cap', ch), slot: $('.mixer__slot', ch), leds: $$('.mixer__meter i', ch), f: parseFloat($('.mixer__cap', ch).style.getPropertyValue('--f')) / 100 }));
-    // Glisser un fader (souris ou doigt)
-    chans.forEach((c) => {
-      c.slot.style.pointerEvents = 'auto'; c.slot.style.touchAction = 'none';
-      const set = (e) => { const r = c.slot.getBoundingClientRect(); c.f = Math.min(0.92, Math.max(0, 1 - (e.clientY - r.top) / r.height)); c.cap.style.setProperty('--f', `${c.f * 100}%`); };
-      c.slot.addEventListener('pointerdown', (e) => { c.slot.setPointerCapture(e.pointerId); set(e); });
-      c.slot.addEventListener('pointermove', (e) => { if (c.slot.hasPointerCapture(e.pointerId)) set(e); });
-    });
-    $('.mixer-hero').style.pointerEvents = 'auto';
-    let t = 0;
-    gsap.ticker.add((time, dt) => {
-      t += dt / 1000;
-      chans.forEach((c, i) => {
-        const wob = state.calm ? 0.5 : 0.5 + 0.5 * Math.sin(t * (1.3 + i * 0.4) + i);
-        const lvl = state.calm ? c.f * 0.8 : Math.min(1, c.f * (0.55 + state.level * 0.9) + wob * 0.15);
-        const n = Math.round(lvl * 16);
-        c.leds.forEach((l, j) => { const idx = 15 - j; l.classList.toggle('on', idx < n); l.classList.toggle('hi', idx >= 13 && idx < n); });
-      });
-    });
-  }
 
   /* ---------- D1 : devis en 6 pistes ---------- */
   const form = $('[data-devis]');
@@ -71,8 +41,8 @@ export default function contact() {
     steps.forEach((s) => s.classList.toggle('is-current', +s.dataset.step === n));
     segs.forEach((b, i) => { b.classList.toggle('is-current', i + 1 === n); b.classList.toggle('is-done', done.has(i + 1) && i + 1 !== n); });
     prev.style.visibility = n === 1 ? 'hidden' : 'visible';
-    nextLabel.textContent = n === 6 ? 'Presser ma demande' : 'Suivant';
-    status.textContent = ''; status.className = 'form-status';
+    nextLabel.textContent = n === 6 ? 'Envoyer ma demande' : 'Suivant';
+    status.textContent = ''; status.className = 'form-status'; clearErrors();
     const s = steps[n - 1];
     if (!state.calm) gsap.fromTo(s, { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.5, ease: 'power3.out' });
   };
@@ -83,6 +53,26 @@ export default function contact() {
     chip.setAttribute('aria-checked', 'true'); chip.classList.add('is-on');
     data.type = chip.dataset.val; rlType.textContent = data.type; setTrack(1, data.type, '');
   }));
+
+  // Clavier : le groupe de types se parcourt aux flèches (un seul arrêt de tabulation)
+  const typeChips = $$('[data-single="type"] .chip', form);
+  const rove = () => { const cur = typeChips.find((c) => c.getAttribute('aria-checked') === 'true') || typeChips[0]; typeChips.forEach((c) => c.setAttribute('tabindex', c === cur ? '0' : '-1')); };
+  rove();
+  typeChips.forEach((chip, i) => {
+    chip.addEventListener('click', rove);
+    chip.addEventListener('keydown', (e) => {
+      const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+      if (!d) return; e.preventDefault();
+      const n = typeChips[(i + d + typeChips.length) % typeChips.length]; n.focus(); n.click();
+    });
+  });
+  // Arrivée depuis une pochette ou la liste des prestations : le type est déjà choisi
+  const pre = store.get('sono-prefill', true);
+  if (pre) {
+    store.del('sono-prefill', true);
+    const chip = typeChips.find((c) => c.dataset.val === pre);
+    if (chip) { chip.click(); setTimeout(() => { status.className = 'form-status is-ok'; status.textContent = `Type d’événement choisi : ${pre}. Passez à l’étape suivante.`; }, 50); }
+  }
 
   // Piste 2 : date + compte à rebours
   const dateIn = $('[data-date]', form); const unknown = $('[data-date-unknown]', form);
@@ -136,29 +126,53 @@ export default function contact() {
   // Piste 6 : coordonnées
   const nameIn = $('[data-name]', form), telIn = $('[data-tel]', form), mailIn = $('[data-mail]', form), rgpd = $('[data-rgpd]', form);
 
+  const errEls = Object.fromEntries($$('[data-err]', form).map((el) => [el.dataset.err, el]));
+  const targets = { type: () => $('[data-single="type"]', form), date: () => dateIn, commune: () => cIn, name: () => nameIn, tel: () => telIn, mail: () => mailIn, rgpd: () => rgpd };
+  function clearErrors() {
+    Object.values(errEls).forEach((el) => { el.textContent = ''; el.classList.remove('is-on'); });
+    $$('[aria-invalid]', form).forEach((el) => el.removeAttribute('aria-invalid'));
+    $$('.check.is-invalid', form).forEach((el) => el.classList.remove('is-invalid'));
+  }
+  const showErrors = (errs) => {
+    clearErrors();
+    errs.forEach(([key, msg]) => {
+      const el = errEls[key]; if (el) { el.textContent = msg; el.classList.add('is-on'); }
+      const t = targets[key]?.(); if (!t) return;
+      t.setAttribute('aria-invalid', 'true');
+      if (key === 'rgpd') t.closest('.check')?.classList.add('is-invalid');
+    });
+    const first = targets[errs[0][0]]?.();
+    const focusEl = first?.matches('[role="radiogroup"]') ? (first.querySelector('[tabindex="0"]') || first.querySelector('button')) : first;
+    focusEl?.focus();
+    status.className = 'form-status is-err';
+    status.textContent = errs.length > 1 ? `${errs.length} champs à corriger.` : '';
+  };
+
   const validate = (n) => {
-    if (n === 1 && !data.type) return 'Choisissez un type d’événement.';
-    if (n === 2 && !data.date && !data.dateUnknown) return dateIn.value ? 'Cette date est passée.' : 'Indiquez une date, ou cochez « pas encore fixée ».';
-    if (n === 3 && !data.commune && !cIn.value.trim()) return 'Indiquez la commune de la salle.';
+    const errs = [];
+    if (n === 1 && !data.type) errs.push(['type', 'Choisissez un type d’événement.']);
+    if (n === 2 && !data.date && !data.dateUnknown) errs.push(['date', dateIn.value ? 'Cette date est passée.' : 'Indiquez une date, ou cochez « La date n’est pas encore fixée ».']);
+    if (n === 3 && !data.commune && !cIn.value.trim()) errs.push(['commune', 'Indiquez la commune de la salle.']);
     if (n === 3 && !data.commune && cIn.value.trim()) { data.communeText = cIn.value.trim(); setTrack(3, data.communeText, '?'); }
     if (n === 6) {
       data.name = nameIn.value.trim(); data.tel = telIn.value.trim(); data.mail = mailIn.value.trim(); data.rgpd = rgpd.checked;
-      if (!data.name) return 'Indiquez votre nom.';
-      if (!data.tel && !data.mail) return 'Laissez un téléphone ou un e-mail.';
-      if (data.mail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.mail)) return 'L’adresse e-mail semble incomplète.';
-      if (data.tel && data.tel.replace(/\D/g, '').length < 10) return 'Le numéro de téléphone semble incomplet.';
-      if (!data.rgpd) return 'Cochez la case de consentement.';
-      setTrack(6, data.name, data.tel ? 'tél.' : 'e-mail');
+      if (!data.name) errs.push(['name', 'Indiquez votre nom.']);
+      if (!data.tel && !data.mail) errs.push(['tel', 'Laissez un téléphone ou un e-mail.']);
+      if (data.tel && data.tel.replace(/\D/g, '').length < 10) errs.push(['tel', 'Le numéro de téléphone semble incomplet (10 chiffres).']);
+      if (data.mail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.mail)) errs.push(['mail', 'L’adresse e-mail semble incomplète.']);
+      if (!data.rgpd) errs.push(['rgpd', 'Cochez la case pour que je puisse vous recontacter.']);
+      if (!errs.length) setTrack(6, data.name, data.tel ? 'tél.' : 'e-mail');
     }
     if (n === 4) updG();
-    return '';
+    return errs;
   };
 
   next.addEventListener('click', () => {
-    const err = validate(cur);
-    if (err) { status.className = 'form-status is-err'; status.textContent = err; return; }
+    const errs = validate(cur);
+    if (errs.length) { showErrors(errs); return; }
+    clearErrors();
     done.add(cur);
-    if (cur < 6) { show(cur + 1); steps[cur - 1].querySelector('button, input, select, textarea')?.focus({ preventScroll: true }); return; }
+    if (cur < 6) { show(cur + 1); steps[cur - 1].querySelector('button[tabindex="0"], button:not([tabindex]), input, select, textarea')?.focus({ preventScroll: true }); return; }
     press();
   });
   prev.addEventListener('click', () => { if (cur > 1) show(cur - 1); });
@@ -168,7 +182,10 @@ export default function contact() {
     steps.forEach((s) => s.classList.remove('is-current'));
     $('.step__nav', form).style.display = 'none';
     $('[data-devis-steps]', form).style.display = 'none';
-    pressed.classList.add('is-visible'); pressed.focus({ preventScroll: true });
+    pressed.classList.add('is-visible');
+    // La confirmation est amenée à l'écran et reçoit le focus
+    scrollToTarget(form, { offset: -(72 + 24) });
+    setTimeout(() => pressed.focus({ preventScroll: true }), state.calm ? 0 : 400);
     if (!state.calm) {
       gsap.timeline()
         .to('[data-record]', { scale: 0.86, duration: 0.18, ease: 'power2.in' })
@@ -192,8 +209,5 @@ export default function contact() {
     setTimeout(() => { lab.textContent = 'Copier le numéro'; }, 2200);
   }));
 
-  /* ---------- D3 : zone ---------- */
-  const zone = $('#zone');
-  if (zone) initZoneBlock(zone);
-  loadZoneData();
+  loadZoneData(); // communes de l'étape 3
 }

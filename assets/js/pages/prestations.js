@@ -1,7 +1,5 @@
 // Prestations (Face B)
-import { state, on, $, $$ } from '../core/state.js?v=20261027';
-import { initAnimToys } from '../core/anims.js?v=20261027';
-import { initStrip } from '../core/strip.js?v=20261027';
+import { state, on, $, $$ } from '../core/state.js';
 
 export default function prestations() {
   const { gsap, ScrollTrigger } = window;
@@ -12,9 +10,13 @@ export default function prestations() {
   const disc = $('[data-phero-disc]', hero); const ring = $('[data-phero-ring]', hero);
   const st = { r: 0, open: 0 };
   const geo = () => {
-    const W = hero.clientWidth, H = hero.clientHeight, mobile = W < 900;
-    const cx = W * (mobile ? 0.56 : 0.7), cy = H * (mobile ? 0.235 : 0.42);
-    const R = mobile ? Math.min(W * 0.26, H * 0.13) : Math.min(W * 0.17, H * 0.27);
+    const W = hero.clientWidth, H = hero.clientHeight, vh = window.innerHeight;
+    const portrait = W < 900 && vh >= W;
+    // Téléphone en portrait : disque centré sous l'en-tête, dans l'espace réservé en CSS (anneau = min(31vw, 19svh))
+    const ringR = Math.min(W * 0.31, vh * 0.19);
+    const cx = portrait ? W * 0.5 : W * 0.7;
+    const cy = portrait ? 72 + 14 + ringR : Math.min(H, vh) * 0.42;
+    const R = portrait ? ringR * 0.64 : Math.min(W * 0.17, Math.min(H, vh) * 0.27);
     const full = Math.hypot(Math.max(cx, W - cx), Math.max(cy, H - cy));
     return { cx, cy, R, full };
   };
@@ -45,13 +47,14 @@ export default function prestations() {
   const list = $('[data-evlist]'); const float = $('[data-float-img]');
   if (list && float && state.finePointer) {
     const kids = Array.from(float.children);
-    const xTo = gsap.quickTo(float, 'x', { duration: state.calm ? 0.01 : 0.55, ease: 'power3' });
     const yTo = gsap.quickTo(float, 'y', { duration: state.calm ? 0.01 : 0.55, ease: 'power3' });
     const rTo = gsap.quickTo(float, 'rotation', { duration: 0.8, ease: 'power3' });
     let lastX = 0;
     list.addEventListener('pointermove', (e) => {
       const fw = float.offsetWidth, fh = float.offsetHeight;
-      xTo(e.clientX - fw / 2 + 40); yTo(e.clientY - fh / 2);
+      // L'image reste dans la colonne de droite : seule la hauteur suit le curseur
+      gsap.set(float, { x: window.innerWidth * 0.64 - fw / 2 });
+      yTo(Math.max(16, Math.min(window.innerHeight - fh - 16, e.clientY - fh / 2)));
       if (!state.calm) rTo(Math.max(-8, Math.min(8, (e.clientX - lastX) * 0.6))); lastX = e.clientX;
     });
     $$('li', list).forEach((li) => li.addEventListener('pointerenter', () => {
@@ -102,8 +105,8 @@ export default function prestations() {
     cards.forEach((c, i) => {
       const d = i - cur;
       const props = d < 0
-        ? { rotationX: -82, yPercent: 6, z: 40, opacity: 0, zIndex: 30 + d }
-        : { rotationX: 4 + d * 3, yPercent: -d * 15, z: -d * 46, scale: 1 - d * 0.03, opacity: d > 3 ? 0 : 1 - d * 0.12, filter: `brightness(${1 - d * 0.18})`, zIndex: 20 - d };
+        ? { rotationX: -82, yPercent: 6, xPercent: 0, z: 40, opacity: 0, zIndex: 30 + d }
+        : { rotationX: 4 + d * 4, yPercent: -d * 19, xPercent: d * 7, z: -d * 64, scale: 1 - d * 0.045, opacity: d > 3 ? 0 : 1 - d * 0.14, filter: `brightness(${1 - d * 0.2})`, zIndex: 20 - d };
       gsap.to(c, { ...props, duration: instant || state.calm ? 0 : 0.85, ease: 'expo.out', transformOrigin: '50% 100%' });
       c.setAttribute('aria-hidden', String(d !== 0));
     });
@@ -123,13 +126,4 @@ export default function prestations() {
     let visible = false; ScrollTrigger.create({ trigger: flip, start: 'top bottom', end: 'bottom top', onToggle: (s) => { visible = s.isActive; } });
     setInterval(() => { if (visible && !hover && !document.hidden) go(cur + 1); }, 3600);
   }
-
-  /* ---------- B4 : les projecteurs balaient la section ---------- */
-  if (!state.calm) {
-    const sweeps = $$('[data-gear-beams] i').map((b, i) => gsap.to(b, { rotation: (i % 2 ? -1 : 1) * 16, duration: 3 + i * 0.7, ease: 'sine.inOut', yoyo: true, repeat: -1, paused: true }));
-    ScrollTrigger.create({ trigger: '#materiel', start: 'top bottom', end: 'bottom top', onToggle: (s) => sweeps.forEach((t) => (s.isActive ? t.play() : t.pause())) });
-  }
-
-  initAnimToys(document);
-  initStrip();
 }

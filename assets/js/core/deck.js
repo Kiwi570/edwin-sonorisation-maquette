@@ -1,7 +1,7 @@
 // Barre « deck » : son démo, mode calme, crossfader de progression + horloge musicale partagée
-import { state, emit, on, $, $$, store, MOODS } from './state.js?v=20261027';
-import { audio } from './audio.js?v=20261027';
-import { scrollProgress } from './smooth.js?v=20261027';
+import { state, emit, on, $, $$, store, MOODS } from './state.js';
+import { audio } from './audio.js';
+import { scrollProgress } from './smooth.js';
 
 let hintTimer = null;
 export function hint(text, ms = 3200) {
@@ -85,7 +85,8 @@ export function initDeck() {
   on('leave', () => { if (audio.on) { store.set('sono-was-playing', '1', true); audio.stop(); } });
   if (store.get('sono-was-playing', true)) {
     store.del('sono-was-playing', true);
-    setTimeout(() => hint('Touchez « Son démo » pour relancer la musique.'), 1400);
+    // Rappel discret, seulement sur l'accueil (ailleurs il masquerait le contenu)
+    if (state.page === 'home') setTimeout(() => hint('Touchez « Son » pour relancer la musique.'), 1400);
   }
 }
 

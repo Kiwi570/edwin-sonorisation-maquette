@@ -1,4 +1,4 @@
-# Sonorisation — maquette « Platine de nuit » (v2)
+# Sonorisation — maquette « Platine de nuit » (v3)
 
 Maquette du nouveau site de **Sonorisation**, DJ et animateur à Bruay-La-Buissière (62700).
 Site statique (HTML, CSS, JavaScript), sans étape de construction, prêt pour Vercel.
@@ -7,10 +7,10 @@ Site statique (HTML, CSS, JavaScript), sans étape de construction, prêt pour V
 
 | Face | Fichier | Contenu |
 |---|---|---|
-| A | `index.html` | Ouverture vinyle 3D (WebGL), le DJ, événements, pads d’ambiance, animations, galerie, zone 50 km, livre d’or, appel final |
-| B | `prestations.html` | Disque qui s’ouvre, liste des événements, soirée type (égaliseur), playlist, matériel, animations, photos |
-| C | `livre-d-or.html` | Emplacements d’avis réels, témoignage (simulé), photos et vidéos |
-| D | `contact.html` | Table de mixage, devis en 6 pistes (simulé), horaires « joignable maintenant », zone |
+| A | `index.html` | Ouverture vinyle 3D (WebGL), le DJ, événements (liens devis préremplis), pads d’ambiance, animations, galerie, zone 50 km, appel final |
+| B | `prestations.html` | Disque qui s’ouvre, liste des événements, soirée type (égaliseur), styles musicaux, matériel, comment ça se passe, questions fréquentes |
+| C | `livre-d-or.html` | Avis (état vide honnête), témoignage (simulé), photos et emplacement vidéo |
+| D | `contact.html` | Devis en 6 étapes (simulé, erreurs sous les champs), horaires « joignable maintenant », numéro à copier |
 | — | `mentions-legales.html` | Mentions, confidentialité, crédits |
 | — | `404.html` | « Disque rayé » |
 
@@ -23,7 +23,8 @@ Site statique (HTML, CSS, JavaScript), sans étape de construction, prêt pour V
 - Disponibilités du samedi et du dimanche
 - Prénom « Edwin » à confirmer (tiré de l’adresse du site)
 - Vidéos de prestations
-- Déroulé de la soirée type (exemple à valider)
+- Déroulé de la soirée type et étapes « Comment ça se passe » (exemples à valider)
+- Réponses de la FAQ marquées « à compléter » : tarifs indicatifs, délai de réservation conseillé
 - Avant la mise en ligne réelle : retirer `<meta name="robots" content="noindex">` dans chaque page
 
 ## Images
@@ -35,7 +36,7 @@ Site statique (HTML, CSS, JavaScript), sans étape de construction, prêt pour V
 
 ## Effets
 
-Vinyle WebGL qui se « scratche » au défilement (résolution adaptative, repli CSS sans WebGL), bras de lecture et crossfader de progression, transitions « balayage laser », pads d’ambiance qui changent la couleur et le tempo du site, compteurs façon afficheur BPM, carte radar des 50 km, égaliseur de la soirée type, devis qui presse un disque, onde au survol des photos, curseur vinyle, boutons magnétiques, cartes 3D.
+Vinyle WebGL qui se « scratche » au défilement (résolution adaptative, repli CSS sans WebGL), bras de lecture et crossfader de progression, transitions « balayage laser », pads d’ambiance qui changent la couleur et le tempo de la page (les boutons d’action restent verts), compteurs façon afficheur BPM, carte radar des 50 km, égaliseur de la soirée type, bac de styles à feuilleter, onde au survol des photos, curseur vinyle, boutons magnétiques, cartes 3D.
 
 Son démo : boucles originales synthétisées par le navigateur (Web Audio), uniquement après un clic.
 Mode calme : bouton toujours visible, et activé automatiquement si « réduire les animations » est demandé par le système. Jamais plus de 3 flashs par seconde.
@@ -46,3 +47,12 @@ Mode calme : bouton toujours visible, et activé automatiquement si « réduire 
 - Polices Unbounded, Inter, JetBrains Mono (SIL OFL), sous-ensemble latin en WOFF2 dans `assets/fonts/`
 - Communes et contours : IGN Admin Express / INSEE 2018 via france-geojson (`assets/data/`) — distances à vol d’oiseau, à actualiser avec l’API Géo en production
 - `vercel.json` : `cleanUrls` activé
+
+## Nouveautés v3 (audit complet)
+
+- Téléphone : l’ouverture ne passe plus sous l’en-tête, le disque se range au-dessus du texte, barre du bas « Devis + Appeler » toujours à portée de pouce (Son et Calme en icônes)
+- Titres recalibrés pour tenir à 320 px, accents des capitales plus coupés
+- Devis : erreurs affichées sous chaque champ, liste des communes au-dessus des boutons, confirmation amenée à l’écran
+- Moins de répétitions (photos, sections), un seul traitement colorimétrique pour les photos réelles
+- Prestations : « Comment ça se passe » et questions fréquentes à la place des doublons
+- Ouverture raccourcie (≈ 1,2 s), transitions plus rapides, zones tactiles d’au moins 44 px, survols réservés à la souris

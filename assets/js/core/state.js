@@ -70,11 +70,8 @@ export function setMood(key, { silent = false } = {}) {
   html.style.setProperty('--tint-rgb', `${r}, ${g}, ${b}`);
   $$('[data-bpm]').forEach((el) => { el.textContent = String(m.bpm); });
   $$('[data-mood-name]').forEach((el) => { el.textContent = m.name; });
-  store.set('sono-mood', key, true);
   if (!silent) emit('mood', key);
 }
 
-export function initMoodFromSession() {
-  const k = store.get('sono-mood', true);
-  if (k && MOODS[k]) setMood(k, { silent: true });
-}
+// L'ambiance choisie ne suit plus le visiteur d'une page à l'autre (v3) : on efface l'ancienne valeur
+export function initMoodFromSession() { store.del('sono-mood', true); }

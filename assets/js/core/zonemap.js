@@ -1,5 +1,5 @@
 // Carte « radar » des 50 km + recherche de commune (distance à vol d'oiseau depuis Bruay-La-Buissière)
-import { SITE, state, on, $, $$, hexToRgb } from './state.js?v=20261027';
+import { SITE, state, on, $, $$, hexToRgb } from './state.js';
 
 let dataPromise = null;
 export function loadZoneData() {
@@ -58,7 +58,7 @@ export function communeCombobox(input, list, onSelect) {
 export function describe(it) {
   if (!it) return { cls: '', html: 'Commune introuvable dans la base : précisez-la au téléphone.' };
   if (it.d <= SITE.radiusKm) return { cls: 'is-in', html: `<span aria-hidden="true">✓</span><span><b>${it.name}</b> · ${fmtKm(it.d)} : dans la zone d’intervention.</span>` };
-  return { cls: 'is-out', html: `<span aria-hidden="true">↗</span><span><b>${it.name}</b> · ${fmtKm(it.d)} : au-delà de 50 km, possible sur demande.</span>` };
+  return { cls: 'is-out', html: `<span aria-hidden="true">↗</span><span><b>${it.name}</b> · ${fmtKm(it.d)}, au-delà des 50&nbsp;km&nbsp;: appelez-moi pour en parler.</span>` };
 }
 
 export async function initZoneMap(root) {
@@ -86,7 +86,8 @@ export async function initZoneMap(root) {
   addLabel('Bruay-la-Buissière', 'is-home');
   // Au centre, les communes proches se chevaucheraient : elles s'affichent à la sélection
   SITE.cited.forEach((n) => { const p = byKey.get(norm(n)); if (p && p.d >= 17 && n !== 'Avion') addLabel(n, 'is-cited'); });
-  SITE.landmarks.forEach((n) => addLabel(n, ''));
+  // Sur téléphone, seuls trois repères restent affichés (Lille, Arras, Saint-Omer)
+  SITE.landmarks.forEach((n) => addLabel(n, ['Lille', 'Arras', 'Saint-Omer'].includes(n) ? '' : 'is-minor'));
 
   let W = 0, H = 0, dpr = 1, scale = 1, sweep = 0, selected = null, ping = 0, visible = false, running = false;
   const resize = () => {

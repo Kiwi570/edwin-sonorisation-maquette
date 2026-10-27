@@ -11,16 +11,18 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="Livre d&#x27;or · Sonorisation, DJ à Bruay-La-Buissière">
 <meta property="og:description" content="Les retours de celles et ceux qui ont partagé une soirée avec Sonorisation. Laissez à votre tour votre témoignage.">
-<meta property="og:image" content="https://edwin-sonorisation-maquette.vercel.app/assets/img/og-sonorisation.jpg">
+<meta property="og:url" content="https://edwin-sonorisation-maquette.vercel.app/livre-d-or">
+<meta property="og:site_name" content="Sonorisation">
+<meta property="og:image" content="https://edwin-sonorisation-maquette.vercel.app/assets/img/og/sonorisation-og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:alt" content="Sonorisation, DJ à Bruay-La-Buissière : votre soirée mixée sur mesure">
+<meta property="og:image:alt" content="Sonorisation, DJ et animation à Bruay-La-Buissière : votre soirée, mixée sur mesure">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/unbounded-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/main.css?v=20261027">
+<link rel="stylesheet" href="assets/css/main.css">
 <script>
 (function(){var d=document.documentElement;d.classList.add('js');var c=null;try{c=localStorage.getItem('sono-calm')}catch(e){}
 if(c==='1'||(c===null&&window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))d.classList.add('calm');
@@ -45,23 +47,6 @@ if(false&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.
     <circle cx="44" cy="16" r="4" fill="var(--tint)"/>
   </svg>
 </div>
-<div class="deck" data-deck>
-  <div class="deck__panel" role="group" aria-label="Lecteur">
-    <button class="deck__btn" type="button" aria-pressed="false" data-sound-toggle>
-      <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <span class="deck__label-long">Son démo</span><span class="deck__label-short">Son</span>
-    </button>
-    <button class="deck__btn" type="button" aria-pressed="false" data-calm-toggle>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span class="deck__label-long">Mode calme</span><span class="deck__label-short">Calme</span>
-    </button>
-    <div class="xfader" aria-hidden="true">
-      <span class="xfader__time" data-time>A · 00:00</span>
-      <div class="xfader__track"><div class="xfader__fill" data-xfill></div><div class="xfader__knob" data-xknob></div></div>
-    </div>
-  </div>
-  <div class="deck__hint" data-deck-hint role="status" aria-live="polite"></div>
-  <div class="deck__call"><a class="btn btn--sm" href="tel:+33786399156"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="btn__label">Appeler</span></a></div>
-</div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <filter id="wave" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
     <feTurbulence type="fractalNoise" baseFrequency="0.004 0.022" numOctaves="1" seed="4" result="n" data-wave-turb/>
@@ -81,12 +66,12 @@ if(false&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.
       <span class="status-pill" data-hours><span class="dot"></span><span data-hours-text>Horaires d’appel</span></span>
       <a class="btn btn--sm btn--call" href="tel:+33786399156" data-magnetic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="btn__label">07 86 39 91 56</span></a>
       <a class="btn btn--sm btn--ghost header__devis" href="contact.html#devis" data-magnetic><span class="btn__label">Devis</span></a>
+      <a class="btn btn--icon" href="tel:+33786399156" aria-label="Appeler le 07 86 39 91 56"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-btn><span class="sr-only">Ouvrir le menu</span><i aria-hidden="true"></i></button>
     </div>
   </div>
 </header>
 <div class="menu" id="menu" data-menu aria-hidden="true" inert>
-  <div class="menu__vinyl" aria-hidden="true"></div>
   <nav aria-label="Menu"><ol>
 <li><a href="index.html"><span>A</span>Accueil</a></li>
 <li><a href="prestations.html"><span>B</span>Prestations</a></li>
@@ -94,6 +79,7 @@ if(false&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.
 <li><a href="contact.html"><span>D</span>Contact</a></li>
   </ol></nav>
   <div class="menu__foot">
+    <a class="btn btn--ghost" href="contact.html#devis"><span class="btn__label">Demander un devis</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <a class="btn" href="tel:+33786399156"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="btn__label">Appeler · 07 86 39 91 56</span></a>
     <p class="mono" data-hours><span class="dot" style="display:inline-block;margin-right:.6em"></span><span data-hours-text>Horaires d’appel</span></p>
   </div>
@@ -119,27 +105,17 @@ if(false&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.
 </section>
 
 <!-- ============ C1 — AVIS ============ -->
-<section class="section" id="avis" aria-labelledby="avis-title">
-  <div class="sec-bg" aria-hidden="true"><img src="assets/img/grok/g06-evenement-soiree-privee-784.webp" srcset="assets/img/grok/g06-evenement-soiree-privee-480.webp 480w, assets/img/grok/g06-evenement-soiree-privee-784.webp 784w" sizes="100vw" width="784" height="1168" alt="" aria-hidden="true" loading="lazy" decoding="async" class="grok-img cover"></div>
+<section class="section section--tight" id="avis" aria-labelledby="avis-title">
   <div class="shell">
-    <div class="sec-head sec-head--split">
-      <div>
-        <p class="track">C1 — Vos retours</p>
-        <h2 class="h2" id="avis-title" style="margin-top:18px" data-reveal="lines">Les avis, rangés comme des disques.</h2>
+    <p class="track">C1 — Vos retours</p>
+    <h2 class="h2" id="avis-title" style="margin-top:18px" data-reveal="lines">Ce qu’ils en disent.</h2>
+    <div class="empty" data-reveal="fade">
+      <span class="empty__disc" aria-hidden="true"></span>
+      <p><strong>Aucun avis publié pour l’instant.</strong> Les avis Google et Facebook seront repris ici dès que les liens seront fournis&nbsp;: aucun avis n’est inventé. <span class="todo">avis à fournir</span></p>
+      <div class="btn-row">
+        <span class="chip" aria-disabled="true">Avis Google <span class="todo">lien à fournir</span></span>
+        <span class="chip" aria-disabled="true">Page Facebook <span class="todo">lien à confirmer</span></span>
       </div>
-      <div data-reveal="fade">
-        <p class="lead">Chaque avis réel prendra place dans ce bac, avec le prénom, le type d’événement et la date.</p>
-        <p class="note" style="margin-top:18px"><span aria-hidden="true">✓</span><span><strong>Aucun avis n’est inventé.</strong> Le livre d’or du site actuel est vide&nbsp;: les avis seront repris de Google et Facebook dès que les liens seront fournis. <span class="todo">avis à fournir</span></span></p>
-      </div>
-    </div>
-    <div class="reviews" data-reviews>
-      <article class="review-slot"><span class="mono">Disque 01 · Mariage</span><p>Emplacement réservé à un avis réel.</p><span class="todo">avis réel à venir</span><span class="review-slot__disc" aria-hidden="true"></span></article>
-      <article class="review-slot"><span class="mono">Disque 02 · Anniversaire</span><p>Emplacement réservé à un avis réel.</p><span class="todo">avis réel à venir</span><span class="review-slot__disc" aria-hidden="true"></span></article>
-      <article class="review-slot"><span class="mono">Disque 03 · Soirée privée</span><p>Emplacement réservé à un avis réel.</p><span class="todo">avis réel à venir</span><span class="review-slot__disc" aria-hidden="true"></span></article>
-    </div>
-    <div class="btn-row" style="margin-top:26px">
-      <span class="chip" aria-disabled="true">Avis Google <span class="todo">lien à fournir</span></span>
-      <span class="chip" aria-disabled="true">Page Facebook <span class="todo">lien à confirmer</span></span>
     </div>
   </div>
 </section>
@@ -155,19 +131,21 @@ if(false&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.
       <p class="track">C2 — À vous</p>
       <h2 class="h2" id="t-title" style="margin-top:18px" data-reveal="lines">Laissez votre témoignage.</h2>
       <form class="form" style="margin-top:28px" data-testi-form novalidate>
+        <p class="muted" style="font-size:.9rem">Les champs marqués d’un astérisque sont obligatoires.</p>
         <div class="form__row form__row--2">
-          <div class="field"><label for="t-name">Prénom</label><input class="input" id="t-name" name="prenom" autocomplete="given-name" required></div>
-          <div class="field"><label for="t-type">Événement</label>
-            <select class="input" id="t-type" name="evenement" required>
+          <div class="field"><label for="t-name">Prénom *</label><input class="input" id="t-name" name="prenom" autocomplete="given-name" required aria-describedby="err-t-name"><p class="field__err" id="err-t-name"></p></div>
+          <div class="field"><label for="t-type">Événement *</label>
+            <select class="input" id="t-type" name="evenement" required aria-describedby="err-t-type">
               <option value="">Choisir…</option><option>Mariage</option><option>Anniversaire</option><option>Baptême</option><option>Communion</option><option>Départ en retraite</option><option>Soirée privée</option><option>Petit concert privé</option><option>Autre</option>
-            </select></div>
+            </select><p class="field__err" id="err-t-type"></p></div>
         </div>
-        <div class="field"><label for="t-date">Date de l’événement</label><input class="input" id="t-date" name="date" type="month"></div>
-        <div class="field"><label for="t-msg">Votre message</label><textarea class="input" id="t-msg" name="message" required placeholder="Racontez votre soirée…"></textarea></div>
-        <label class="check"><input type="checkbox" name="rgpd" required><span>J’ai pris connaissance de la <a href="mentions-legales.html#confidentialite">politique de confidentialité</a> et j’accepte que mon témoignage soit publié avec mon prénom.</span></label>
-        <div class="btn-row"><button class="btn" type="submit" data-magnetic><span class="btn__label">Presser mon disque</span></button></div>
+        <fieldset class="field" style="border:0;padding:0;margin:0"><legend class="label" style="padding:0;margin-bottom:8px">Date de l’événement (facultatif)</legend><div class="form__row form__row--2"><label class="sr-only" for="t-month">Mois</label><select class="input" id="t-month" name="mois"><option value="">Mois</option><option value="01">janvier</option><option value="02">février</option><option value="03">mars</option><option value="04">avril</option><option value="05">mai</option><option value="06">juin</option><option value="07">juillet</option><option value="08">août</option><option value="09">septembre</option><option value="10">octobre</option><option value="11">novembre</option><option value="12">décembre</option></select><label class="sr-only" for="t-year">Année</label><select class="input" id="t-year" name="annee"><option value="">Année</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option></select></div></fieldset>
+        <div class="field"><label for="t-msg">Votre message *</label><textarea class="input" id="t-msg" name="message" required placeholder="Racontez votre soirée…" aria-describedby="err-t-msg"></textarea><p class="field__err" id="err-t-msg"></p></div>
+        <label class="check"><input type="checkbox" name="rgpd" required aria-describedby="err-t-rgpd"><span>J’ai pris connaissance de la <a href="mentions-legales.html#confidentialite">politique de confidentialité</a> et j’accepte que mon témoignage soit publié avec mon prénom. *</span></label>
+        <p class="field__err" id="err-t-rgpd"></p>
+        <div class="btn-row"><button class="btn" type="submit" data-magnetic><span class="btn__label">Publier mon témoignage</span></button></div>
         <p class="form-status" data-form-status role="status" aria-live="polite"></p>
-        <p class="muted" style="font-size:.82rem">Démonstration : aucun message n’est envoyé depuis cette maquette.</p>
+        <p class="muted" style="font-size:.85rem">Démonstration&nbsp;: aucun message n’est envoyé depuis cette maquette.</p>
       </form>
     </div>
   </div>
@@ -180,16 +158,15 @@ if(false&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.
       <p class="track">C3 — Photos &amp; vidéos</p>
       <h2 class="h2" id="ph-title" style="margin-top:18px" data-reveal="lines">Les soirées en images.</h2>
     </div>
-    <p class="lead" data-reveal="fade">Quelques photos réelles de mes prestations. Les vidéos viendront compléter cette page.</p>
+    <p class="lead" data-reveal="fade">Quelques photos réelles de mes prestations. Les vidéos arrivent bientôt.</p>
   </div>
   <div class="strip" data-strip data-cursor-label="Glisser">
     <div class="strip__track">
-      <div class="video-slot media" style="aspect-ratio:16/9;flex:none;height:clamp(240px,40vh,440px)"><img src="assets/img/grok/g17-appel-mains-platine-1168.webp" srcset="assets/img/grok/g17-appel-mains-platine-640.webp 640w, assets/img/grok/g17-appel-mains-platine-1168.webp 1168w" sizes="70vw" width="1168" height="784" alt="" aria-hidden="true" loading="lazy" decoding="async" class="grok-img cover"><span class="todo">vidéo à fournir</span><span class="video-slot__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span></div>
-      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:1728/1296"><img src="assets/img/real/salle-faisceau-bleu-1600.webp" srcset="assets/img/real/salle-faisceau-bleu-480.webp 480w, assets/img/real/salle-faisceau-bleu-960.webp 960w, assets/img/real/salle-faisceau-bleu-1600.webp 1600w" sizes="600px" width="1728" height="1296" alt="Salle en fête, faisceau bleu" loading="lazy" decoding="async" class="photo-treat"></button>
-      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:960/720"><img src="assets/img/real/piste-lumieres-ambre-960.webp" srcset="assets/img/real/piste-lumieres-ambre-480.webp 480w, assets/img/real/piste-lumieres-ambre-960.webp 960w" sizes="600px" width="960" height="720" alt="Piste sous des lumières ambrées" loading="lazy" decoding="async" class="photo-treat"></button>
-      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:526/394"><img src="assets/img/real/piste-foule-bleue-526.webp" srcset="assets/img/real/piste-foule-bleue-480.webp 480w, assets/img/real/piste-foule-bleue-526.webp 526w" sizes="600px" width="526" height="394" alt="Invités sur la piste, lumière bleue" loading="lazy" decoding="async" class="photo-treat"></button>
-      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:1920/900"><img src="assets/img/real/scene-exterieure-podium-1600.webp" srcset="assets/img/real/scene-exterieure-podium-480.webp 480w, assets/img/real/scene-exterieure-podium-960.webp 960w, assets/img/real/scene-exterieure-podium-1600.webp 1600w" sizes="900px" width="1920" height="900" alt="Scène en extérieur" loading="lazy" decoding="async" class="photo-treat"></button>
-      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:705/993"><img src="assets/img/real/tshirt-sonorisation-705.webp" srcset="assets/img/real/tshirt-sonorisation-480.webp 480w, assets/img/real/tshirt-sonorisation-705.webp 705w" sizes="320px" width="705" height="993" alt="T-shirt Sonorisation avec la liste des prestations et le numéro de téléphone" loading="lazy" decoding="async" class="photo-treat"></button>
+      <div class="video-slot media" style="aspect-ratio:16/9;flex:none;height:clamp(220px,40vh,394px)"><img src="assets/img/grok/g17-appel-mains-platine-1168.webp" srcset="assets/img/grok/g17-appel-mains-platine-640.webp 640w, assets/img/grok/g17-appel-mains-platine-1168.webp 1168w" sizes="(max-width: 899px) 120vw, 50vw" width="1168" height="784" alt="" aria-hidden="true" loading="lazy" decoding="async" class="grok-img cover"><span class="video-slot__soon">Vidéo bientôt disponible</span><span class="video-slot__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span></div>
+      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:526/394;height:clamp(220px,40vh,394px)"><img src="assets/img/real/piste-foule-bleue-526.webp" srcset="assets/img/real/piste-foule-bleue-480.webp 480w, assets/img/real/piste-foule-bleue-526.webp 526w" sizes="526px" width="526" height="394" alt="Invités sur la piste sous une lumière bleue" loading="lazy" decoding="async" class="photo-treat"></button>
+      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:1600/1200;height:clamp(220px,40vh,394px)"><img src="assets/img/real/salle-faisceau-bleu-1600.webp" srcset="assets/img/real/salle-faisceau-bleu-480.webp 480w, assets/img/real/salle-faisceau-bleu-960.webp 960w, assets/img/real/salle-faisceau-bleu-1600.webp 1600w" sizes="600px" width="1728" height="1296" alt="Salle en fête traversée par un faisceau bleu" loading="lazy" decoding="async" class="photo-treat"></button>
+      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:1600/1200;height:clamp(220px,40vh,394px)"><img src="assets/img/real/bar-scene-barres-led-1600.webp" srcset="assets/img/real/bar-scene-barres-led-480.webp 480w, assets/img/real/bar-scene-barres-led-960.webp 960w, assets/img/real/bar-scene-barres-led-1600.webp 1600w" sizes="600px" width="2000" height="1500" alt="Petite scène dans un bar, barres LED" loading="lazy" decoding="async" class="photo-treat"></button>
+      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:949/960;height:clamp(220px,40vh,394px)"><img src="assets/img/real/mariage-scene-just-married-949.webp" srcset="assets/img/real/mariage-scene-just-married-480.webp 480w, assets/img/real/mariage-scene-just-married-949.webp 949w" sizes="440px" width="949" height="960" alt="Salle de mariage, scène et écran" loading="lazy" decoding="async" class="photo-treat"></button>
     </div>
   </div>
 </section>
@@ -201,7 +178,7 @@ if(false&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.
     <h2 class="cta__title" id="cta-title" data-cta-title style="margin-top:22px">On lance<br>le son&nbsp;?</h2>
     <p class="cta__status" data-hours><span class="dot"></span><span data-hours-text>Horaires d’appel</span></p>
     <div class="btn-row">
-      <a class="btn" href="contact.html#devis" data-magnetic><span class="btn__label">Construire mon devis</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn" href="contact.html#devis" data-magnetic><span class="btn__label">Demander un devis</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <a class="btn btn--ghost" href="tel:+33786399156" data-magnetic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="btn__label">Appeler</span></a>
     </div>
     <a class="cta__phone link-draw" href="tel:+33786399156">07 86 39 91 56</a>
@@ -213,7 +190,7 @@ if(false&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.
     <div class="footer__grid">
       <div>
         <img src="assets/img/brand/sonorisation-logo.png" alt="Sonorisation" width="388" height="125" style="width:170px" loading="lazy">
-        <p class="footer__big" style="margin-top:22px">DJ &amp; animation<br>à Bruay‑La‑Buissière</p>
+        <p class="footer__big" style="margin-top:22px">DJ &amp; animation<br>à&nbsp;Bruay‑La‑Buissière</p>
         <p class="muted" style="margin-top:12px;max-width:38ch">Mariages, anniversaires, baptêmes, communions, départs en retraite et soirées privées, dans un rayon de 50&nbsp;km.</p>
       </div>
       <div>
@@ -247,13 +224,30 @@ if(false&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.
     </div>
     <div class="footer__bottom">
       <span>© 2026 Sonorisation</span>
-      <span>Maquette de démonstration · les mentions « à compléter » sont à valider avec le client</span>
+      <span>Maquette de démonstration · les mentions «&nbsp;à compléter&nbsp;» sont à valider avec le client</span>
     </div>
   </div>
 </footer>
+<div class="deck" data-deck>
+  <div class="deck__panel" role="group" aria-label="Lecteur">
+    <button class="deck__btn" type="button" aria-pressed="false" aria-label="Son démo" data-sound-toggle>
+      <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="deck__label-long">Son démo</span><span class="deck__label-short">Son</span>
+    </button>
+    <button class="deck__btn" type="button" aria-pressed="false" aria-label="Mode calme" data-calm-toggle>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span class="deck__label-long">Mode calme</span><span class="deck__label-short">Calme</span>
+    </button>
+    <div class="xfader" aria-hidden="true">
+      <span class="xfader__time" data-time>A · 00:00</span>
+      <div class="xfader__track"><div class="xfader__fill" data-xfill></div><div class="xfader__knob" data-xknob></div></div>
+    </div>
+  </div>
+  <div class="deck__hint" data-deck-hint role="status" aria-live="polite"></div>
+  <div class="deck__call"><a class="btn btn--sm btn--ghost deck__devis" href="contact.html#devis"><span class="btn__label">Devis</span></a><a class="btn btn--sm deck__tel" href="tel:+33786399156" aria-label="Appeler le 07 86 39 91 56"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="btn__label">Appeler</span></a></div>
+</div>
 <script src="assets/js/vendor/gsap.min.js" defer></script>
 <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/js/vendor/SplitText.min.js" defer></script>
-<script type="module" src="assets/js/app.js?v=20261027"></script>
+<script type="module" src="assets/js/app.js"></script>
 </body>
 </html>

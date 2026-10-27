@@ -1,5 +1,5 @@
 // Ouverture (loader « l'aiguille se pose »), transitions de page « balayage laser », révélations au défilement
-import { state, $, $$, store, emit } from './state.js?v=20261027';
+import { state, $, $$, store, emit } from './state.js';
 
 const FACES = { 'index.html': 'Face A · Accueil', '': 'Face A · Accueil', 'prestations.html': 'Face B · Prestations', 'prestations': 'Face B · Prestations',
   'livre-d-or.html': 'Face C · Livre d’or', 'livre-d-or': 'Face C · Livre d’or', 'contact.html': 'Face D · Contact', 'contact': 'Face D · Contact',
@@ -20,15 +20,16 @@ export function runLoader() {
     const word = $('[data-l-word]');
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     gsap.set('[data-l-arm]', { rotation: -26, svgOrigin: '276 34' });
-    tl.from('[data-l-disc]', { scale: 0.7, opacity: 0, duration: 0.5, svgOrigin: '150 150' })
-      .to('[data-l-disc]', { rotation: 360, duration: 3.2, ease: 'none', svgOrigin: '150 150' }, 0.1)
-      .to('[data-l-arm]', { rotation: 0, duration: 0.6, ease: 'power3.inOut' }, 0.25)
-      .to('[data-l-ring]', { strokeDashoffset: 0, duration: 0.75, ease: 'power2.inOut' }, 0.8)
-      .to(rpm, { v: 33.3, duration: 0.75, ease: 'power2.out', onUpdate: () => { rpmEl.textContent = rpm.v >= 33.3 ? '33⅓' : rpm.v.toFixed(0).padStart(2, '0'); } }, 0.8)
-      .from(word.children, { yPercent: 100, opacity: 0, duration: 0.5, stagger: 0.08 }, 0.95)
-      .to(loader, { yPercent: -100, duration: 0.75, ease: 'expo.inOut', onStart: () => resolve(true) }, 1.65)
+    // Ouverture courte (≈ 1,2 s) : le disque arrive, l'aiguille se pose, le compteur monte à 33⅓
+    tl.from('[data-l-disc]', { scale: 0.75, opacity: 0, duration: 0.35, svgOrigin: '150 150' })
+      .to('[data-l-disc]', { rotation: 300, duration: 1.6, ease: 'none', svgOrigin: '150 150' }, 0.05)
+      .to('[data-l-arm]', { rotation: 0, duration: 0.4, ease: 'power3.inOut' }, 0.1)
+      .to('[data-l-ring]', { strokeDashoffset: 0, duration: 0.5, ease: 'power2.inOut' }, 0.4)
+      .to(rpm, { v: 33.3, duration: 0.5, ease: 'power2.out', onUpdate: () => { rpmEl.textContent = rpm.v >= 33.3 ? '33⅓' : rpm.v.toFixed(0).padStart(2, '0'); } }, 0.4)
+      .from(word.children, { yPercent: 100, opacity: 0, duration: 0.4, stagger: 0.06 }, 0.3)
+      .to(loader, { yPercent: -100, duration: 0.55, ease: 'expo.inOut', onStart: () => resolve(true) }, 0.85)
       .add(() => { loader.classList.remove('is-active'); loader.remove(); });
-    setTimeout(() => { resolve(true); loader.remove(); }, 4500); // filet de sécurité
+    setTimeout(() => { resolve(true); loader.remove(); }, 3000); // filet de sécurité
   });
 }
 
@@ -71,10 +72,10 @@ function leave(href) {
   gsap.timeline({ onComplete: () => { location.href = href; } })
     .set(panel, { transformOrigin: 'left center', scaleX: 0 })
     .set(laser, { x: 0, opacity: 1 })
-    .to(panel, { scaleX: 1, duration: 0.62, ease: 'power3.inOut' }, 0)
-    .to(laser, { x: w, duration: 0.62, ease: 'power3.inOut' }, 0)
-    .to(label, { opacity: 1, duration: 0.3 }, 0.3);
-  setTimeout(() => { location.href = href; }, 1100);
+    .to(panel, { scaleX: 1, duration: 0.45, ease: 'power3.inOut' }, 0)
+    .to(laser, { x: w, duration: 0.45, ease: 'power3.inOut' }, 0)
+    .to(label, { opacity: 1, duration: 0.2 }, 0.2);
+  setTimeout(() => { location.href = href; }, 900);
 }
 
 export function arrive() {
@@ -90,10 +91,10 @@ export function arrive() {
     if (state.calm) { gsap.to(panel, { opacity: 0, duration: 0.25, onComplete: () => { wipe.style.visibility = ''; gsap.set(panel, { clearProps: 'all' }); resolve(); } }); return; }
     gsap.timeline({ onComplete: () => { wipe.style.visibility = ''; gsap.set([panel, laser], { clearProps: 'all' }); } })
       .set(laser, { x: 0, opacity: 1 })
-      .to(panel, { scaleX: 0, duration: 0.7, ease: 'power3.inOut' }, 0)
-      .to(laser, { x: window.innerWidth, duration: 0.7, ease: 'power3.inOut' }, 0)
-      .to(laser, { opacity: 0, duration: 0.15 }, 0.62)
-      .add(resolve, 0.3);
+      .to(panel, { scaleX: 0, duration: 0.5, ease: 'power3.inOut' }, 0)
+      .to(laser, { x: window.innerWidth, duration: 0.5, ease: 'power3.inOut' }, 0)
+      .to(laser, { opacity: 0, duration: 0.12 }, 0.44)
+      .add(resolve, 0.2);
   });
 }
 
@@ -120,6 +121,12 @@ export function initReveal() {
     gsap.fromTo(el, { clipPath: 'inset(18% 12% 18% 12% round 18px)' }, { clipPath: 'inset(0% 0% 0% 0% round 18px)', ease: 'power3.out', duration: 1.4, scrollTrigger: { trigger: el, start: 'top 85%', once: true } });
   });
 
+  // Galerie : l'image glisse à l'intérieur de son cadre (le cadre ne bouge pas, rien ne se chevauche)
+  $$('[data-parallax-inner]').forEach((el) => {
+    const img = el.querySelector('img'); if (!img) return;
+    gsap.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+
   $$('[data-parallax]').forEach((el) => {
     const v = parseFloat(el.dataset.parallax) || 0.1;
     gsap.fromTo(el, { y: () => -v * window.innerHeight }, { y: () => v * window.innerHeight, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true, invalidateOnRefresh: true } });
@@ -136,8 +143,11 @@ export function initReveal() {
       wrap.appendChild(col); return { col, d: +d };
     });
     el.appendChild(wrap);
+    // Une fois arrêté, le compteur redevient un texte simple (sélection, copie, lecteurs d'écran)
+    const settle = () => { el.textContent = val; el.removeAttribute('aria-label'); };
     cols.forEach(({ col, d }, i) => {
-      gsap.fromTo(col, { yPercent: 0 }, { yPercent: -((20 + d) / 30) * 100, duration: 1.6 + i * 0.25, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
+      gsap.fromTo(col, { yPercent: 0 }, { yPercent: -((20 + d) / 30) * 100, duration: 1.6 + i * 0.25, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+        onComplete: i === cols.length - 1 ? settle : undefined });
     });
   });
 

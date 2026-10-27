@@ -1,11 +1,10 @@
 // Point d'entrée commun à toutes les pages
-import { state, initMoodFromSession, emit, $ } from './core/state.js?v=20261027';
-import { initHours } from './core/hours.js?v=20261027';
-import { initSmooth, initAnchors, scrollToTarget } from './core/smooth.js?v=20261027';
-import { initDeck } from './core/deck.js?v=20261027';
-import { initGrain, initHeader, initMenu, initCursor, initMagnetic, initTilt, initTonearm, initWave, initLightbox } from './core/ui.js?v=20261027';
-import { runLoader, initTransitions, arrive, initReveal } from './core/intro.js?v=20261027';
-import { initPlaceholders } from './core/placeholders.js?v=20261027';
+import { state, initMoodFromSession, emit, $, store } from './core/state.js';
+import { initHours } from './core/hours.js';
+import { initSmooth, initAnchors, scrollToTarget } from './core/smooth.js';
+import { initDeck } from './core/deck.js';
+import { initGrain, initHeader, initMenu, initCursor, initMagnetic, initTilt, initTonearm, initWave, initLightbox } from './core/ui.js';
+import { runLoader, initTransitions, arrive, initReveal } from './core/intro.js';
 
 const html = document.documentElement;
 const PAGES = ['home', 'prestations', 'livre', 'contact', 'legal', 'e404'];
@@ -38,7 +37,9 @@ async function boot() {
 
   initMoodFromSession();
   initGrain();
-  initPlaceholders();
+  if (document.querySelector('[data-ph]')) import('./core/placeholders.js').then((m) => m.initPlaceholders());
+  // Liens « Devis » préremplis : le type d'événement suit le visiteur jusqu'au formulaire
+  document.addEventListener('click', (e) => { const a = e.target.closest('[data-prefill]'); if (a) store.set('sono-prefill', a.dataset.prefill, true); }, true);
   initHours();
   initHeader();
   initMenu();
