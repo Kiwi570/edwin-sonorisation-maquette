@@ -1,4 +1,4 @@
-# Sonorisation — maquette « Platine de nuit » (v1)
+# Sonorisation — maquette « Platine de nuit » (v2)
 
 Maquette du nouveau site de **Sonorisation**, DJ et animateur à Bruay-La-Buissière (62700).
 Site statique (HTML, CSS, JavaScript), sans étape de construction, prêt pour Vercel.
@@ -29,8 +29,9 @@ Site statique (HTML, CSS, JavaScript), sans étape de construction, prêt pour V
 ## Images
 
 - `assets/img/real/` : photos réelles reprises du site actuel, converties en WebP (plusieurs tailles)
-- `assets/img/grok/` : emplacement des images Grok (G01 à G30, voir le document « Images à créer avec Grok »)
-- En attendant, chaque emplacement affiche un visuel provisoire dessiné en code, marqué « Provisoire · Gxx »
+- `assets/img/grok/` : images d’ambiance générées avec Grok (G01 à G30), en WebP 2 tailles ; celles qui montrent une scène de fête portent la mention « Illustration »
+- G01/G02 servent de fond au vinyle WebGL, G29 de texture de brume dans le shader
+- Les visuels dessinés en code (`assets/js/core/placeholders.js`) restent disponibles pour tout futur emplacement sans image
 
 ## Effets
 

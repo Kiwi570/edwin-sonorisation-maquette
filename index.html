@@ -121,7 +121,8 @@ if(true&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.c
 <section class="hero" id="hero" data-hero aria-labelledby="hero-title">
   <canvas class="hero__gl" data-vinyl-gl aria-hidden="true"></canvas>
   <div class="hero__fallback" aria-hidden="true">
-    <div class="hero__fallback-beams"></div>
+    <picture class="cover"><source media="(max-width: 899px)" srcset="assets/img/grok/g02-accueil-ouverture-480.webp 480w, assets/img/grok/g02-accueil-ouverture-784.webp 784w" sizes="100vw"><img src="assets/img/grok/g01-accueil-ouverture-1168.webp" srcset="assets/img/grok/g01-accueil-ouverture-640.webp 640w, assets/img/grok/g01-accueil-ouverture-1168.webp 1168w" sizes="100vw" width="1168" height="784" alt="" aria-hidden="true" loading="eager" decoding="async" class="grok-img"></picture>
+    <div class="hero__fallback-beams" style="position:absolute;inset:0"></div>
     <div class="vinyl-css" data-spin><div class="vinyl-css__label"><img src="assets/img/brand/sonorisation-logo.png" alt="" width="388" height="125"></div></div>
   </div>
   <div class="hero__shade"></div>
@@ -151,6 +152,7 @@ if(true&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.c
 
 <!-- ============ A1 — LE DJ ============ -->
 <section class="section" id="le-dj" aria-labelledby="dj-title">
+  <div class="sec-bg sec-bg--right" aria-hidden="true"><img src="assets/img/grok/g30-texture-poussiere-faisceau-1168.webp" srcset="assets/img/grok/g30-texture-poussiere-faisceau-640.webp 640w, assets/img/grok/g30-texture-poussiere-faisceau-1168.webp 1168w" sizes="60vw" width="1168" height="784" alt="" aria-hidden="true" loading="lazy" decoding="async" class="grok-img cover"></div>
   <div class="shell dj">
     <div class="dj__visual" data-dj-visual>
       <div class="vinyl-css dj__vinyl" data-dj-vinyl aria-hidden="true"><div class="vinyl-css__label"><img src="assets/img/brand/sonorisation-logo.png" alt="" width="388" height="125"></div></div>
@@ -200,18 +202,18 @@ if(true&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.c
         </li>
         <li class="ev" data-ev>
           <div class="vinyl-css ev__vinyl" data-ev-vinyl aria-hidden="true"><div class="vinyl-css__label"><img src="assets/img/brand/sonorisation-logo.png" alt="" width="388" height="125"></div></div>
-          <div class="ev__sleeve"><div class="ph " data-ph="table" data-grok="G03" data-seed="3" role="img" aria-label="Table de fête décorée pour un baptême (visuel provisoire)"></div>
-            <div class="ev__info"><span class="ev__num">A2.3</span><h3 class="ev__title">Baptême</h3><p class="ev__line">Une fête de famille, au bon volume.</p></div></div>
+          <div class="ev__sleeve"><img src="assets/img/grok/g03-evenement-bapteme-784.webp" srcset="assets/img/grok/g03-evenement-bapteme-480.webp 480w, assets/img/grok/g03-evenement-bapteme-784.webp 784w" sizes="(min-width: 900px) 34vw, 80vw" width="784" height="1168" alt="Table de fête décorée pour un baptême" loading="lazy" decoding="async" class="grok-img">
+            <div class="ev__info"><span class="ev__num">A2.3 · Illustration</span><h3 class="ev__title">Baptême</h3><p class="ev__line">Une fête de famille, au bon volume.</p></div></div>
         </li>
         <li class="ev" data-ev>
           <div class="vinyl-css ev__vinyl" data-ev-vinyl aria-hidden="true"><div class="vinyl-css__label"><img src="assets/img/brand/sonorisation-logo.png" alt="" width="388" height="125"></div></div>
-          <div class="ev__sleeve"><div class="ph " data-ph="table" data-grok="G04" data-seed="11" data-tint="#f2e6c9" role="img" aria-label="Table de repas de communion, fleurs et bougies (visuel provisoire)"></div>
-            <div class="ev__info"><span class="ev__num">A2.4</span><h3 class="ev__title">Communion</h3><p class="ev__line">Une ambiance douce, pour tous les âges.</p></div></div>
+          <div class="ev__sleeve"><img src="assets/img/grok/g04-evenement-communion-784.webp" srcset="assets/img/grok/g04-evenement-communion-480.webp 480w, assets/img/grok/g04-evenement-communion-784.webp 784w" sizes="(min-width: 900px) 34vw, 80vw" width="784" height="1168" alt="Table de repas de communion, fleurs et bougies" loading="lazy" decoding="async" class="grok-img">
+            <div class="ev__info"><span class="ev__num">A2.4 · Illustration</span><h3 class="ev__title">Communion</h3><p class="ev__line">Une ambiance douce, pour tous les âges.</p></div></div>
         </li>
         <li class="ev" data-ev>
           <div class="vinyl-css ev__vinyl" data-ev-vinyl aria-hidden="true"><div class="vinyl-css__label"><img src="assets/img/brand/sonorisation-logo.png" alt="" width="388" height="125"></div></div>
-          <div class="ev__sleeve"><div class="ph " data-ph="toast" data-grok="G05" data-seed="5" role="img" aria-label="Coupes levées pour un toast (visuel provisoire)"></div>
-            <div class="ev__info"><span class="ev__num">A2.5</span><h3 class="ev__title">Départ en retraite</h3><p class="ev__line">Une soirée à la hauteur d’une carrière.</p></div></div>
+          <div class="ev__sleeve"><img src="assets/img/grok/g05-evenement-retraite-784.webp" srcset="assets/img/grok/g05-evenement-retraite-480.webp 480w, assets/img/grok/g05-evenement-retraite-784.webp 784w" sizes="(min-width: 900px) 34vw, 80vw" width="784" height="1168" alt="Coupes levées pour un toast" loading="lazy" decoding="async" class="grok-img">
+            <div class="ev__info"><span class="ev__num">A2.5 · Illustration</span><h3 class="ev__title">Départ en retraite</h3><p class="ev__line">Une soirée à la hauteur d’une carrière.</p></div></div>
         </li>
         <li class="ev" data-ev>
           <div class="vinyl-css ev__vinyl" data-ev-vinyl aria-hidden="true"><div class="vinyl-css__label"><img src="assets/img/brand/sonorisation-logo.png" alt="" width="388" height="125"></div></div>
@@ -232,10 +234,10 @@ if(true&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.c
 <!-- ============ A3 — AMBIANCES ============ -->
 <section class="section moods" id="ambiances" data-moods aria-labelledby="moods-title">
   <div class="moods__bg" aria-hidden="true">
-    <div data-mood-bg="lounge"><div class="ph cover" data-ph="lounge" data-grok="G07" data-seed="21" data-tint="#ffb35c" role="img" aria-label="Ambiance lounge, lumière ambrée (visuel provisoire)"></div></div>
-    <div data-mood-bg="dansant" class="is-active"><div class="ph cover" data-ph="beams" data-grok="G08" data-seed="22" role="img" aria-label="Piste bondée, faisceaux verts et blancs (visuel provisoire)"></div></div>
-    <div data-mood-bg="retro"><div class="ph cover" data-ph="ball" data-grok="G09" data-seed="23" data-tint="#ff5fa2" role="img" aria-label="Boule à facettes et reflets rétro (visuel provisoire)"></div></div>
-    <div data-mood-bg="moderne"><div class="ph cover" data-ph="grid" data-grok="G10" data-seed="24" data-tint="#7fe0ff" role="img" aria-label="Scène moderne, barres LED (visuel provisoire)"></div></div>
+    <div data-mood-bg="lounge"><img src="assets/img/grok/g07-ambiance-lounge-1168.webp" srcset="assets/img/grok/g07-ambiance-lounge-640.webp 640w, assets/img/grok/g07-ambiance-lounge-1168.webp 1168w" sizes="100vw" width="1168" height="784" alt="Ambiance lounge, lumière ambrée" loading="lazy" decoding="async" class="grok-img cover"></div>
+    <div data-mood-bg="dansant" class="is-active"><img src="assets/img/grok/g08-ambiance-dansant-1168.webp" srcset="assets/img/grok/g08-ambiance-dansant-640.webp 640w, assets/img/grok/g08-ambiance-dansant-1168.webp 1168w" sizes="100vw" width="1168" height="784" alt="Piste bondée, faisceaux verts et blancs" loading="lazy" decoding="async" class="grok-img cover"></div>
+    <div data-mood-bg="retro"><img src="assets/img/grok/g09-ambiance-retro-1168.webp" srcset="assets/img/grok/g09-ambiance-retro-640.webp 640w, assets/img/grok/g09-ambiance-retro-1168.webp 1168w" sizes="100vw" width="1168" height="784" alt="Boule à facettes et reflets rétro" loading="lazy" decoding="async" class="grok-img cover"></div>
+    <div data-mood-bg="moderne"><img src="assets/img/grok/g10-ambiance-moderne-1168.webp" srcset="assets/img/grok/g10-ambiance-moderne-640.webp 640w, assets/img/grok/g10-ambiance-moderne-1168.webp 1168w" sizes="100vw" width="1168" height="784" alt="Scène moderne, barres LED" loading="lazy" decoding="async" class="grok-img cover"></div>
   </div>
   <div class="shell moods__grid">
     <div>
@@ -270,7 +272,7 @@ if(true&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.c
     <div class="anims__grid">
       <article class="acard" data-tilt>
         <div class="acard__inner">
-          <div class="acard__media"><div class="ph " data-ph="mic" data-grok="G11" data-seed="31" role="img" aria-label="Micro sans fil levé sous un projecteur (visuel provisoire)"></div>
+          <div class="acard__media"><img src="assets/img/grok/g11-animation-karaoke-784.webp" srcset="assets/img/grok/g11-animation-karaoke-480.webp 480w, assets/img/grok/g11-animation-karaoke-784.webp 784w" sizes="(min-width: 860px) 32vw, 92vw" width="784" height="1168" alt="Micro sans fil levé sous un projecteur" loading="lazy" decoding="async" class="grok-img"><span class="media__cap">Illustration</span>
             <div class="acard__toy"><div class="karaoke" data-karaoke aria-hidden="true"><i></i><i style="width:82%"></i><i style="width:64%"></i></div></div>
           </div>
           <div class="acard__body"><span class="mono accent">A4.1</span><h3 class="h3">Karaoké</h3><p class="muted">Micro en main&nbsp;: vos invités prennent la scène, le temps d’un refrain.</p></div>
@@ -279,7 +281,7 @@ if(true&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.c
       </article>
       <article class="acard" data-tilt>
         <div class="acard__inner">
-          <div class="acard__media"><div class="ph " data-ph="chairs" data-grok="G12" data-seed="32" role="img" aria-label="Chaises musicales sur une piste de danse (visuel provisoire)"></div>
+          <div class="acard__media"><img src="assets/img/grok/g12-animation-jeux-musicaux-784.webp" srcset="assets/img/grok/g12-animation-jeux-musicaux-480.webp 480w, assets/img/grok/g12-animation-jeux-musicaux-784.webp 784w" sizes="(min-width: 860px) 32vw, 92vw" width="784" height="1168" alt="Invités autour de chaises musicales, vus des genoux aux pieds" loading="lazy" decoding="async" class="grok-img"><span class="media__cap">Illustration</span>
             <div class="acard__toy"><div class="chairs" data-chairs aria-hidden="true"></div></div>
           </div>
           <div class="acard__body"><span class="mono accent">A4.2</span><h3 class="h3">Jeux musicaux</h3><p class="muted">Des jeux traditionnels aux activités plus originales, pour toutes les générations.</p></div>
@@ -288,7 +290,7 @@ if(true&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.c
       </article>
       <article class="acard" data-tilt>
         <div class="acard__inner">
-          <div class="acard__media"><div class="ph " data-ph="buzzers" data-grok="G13" data-seed="33" role="img" aria-label="Buzzers de quiz sur une table de fête (visuel provisoire)"></div>
+          <div class="acard__media"><img src="assets/img/grok/g13-animation-quiz-784.webp" srcset="assets/img/grok/g13-animation-quiz-480.webp 480w, assets/img/grok/g13-animation-quiz-784.webp 784w" sizes="(min-width: 860px) 32vw, 92vw" width="784" height="1168" alt="Main qui appuie sur un buzzer de quiz allumé en vert" loading="lazy" decoding="async" class="grok-img"><span class="media__cap">Illustration</span>
             <div class="acard__toy"><div class="buzzer-wrap"><button class="buzzer" type="button" data-buzzer aria-label="Appuyer sur le buzzer"></button><span class="mono" data-buzz-text aria-live="polite">Appuyez&nbsp;!</span></div></div>
           </div>
           <div class="acard__body"><span class="mono accent">A4.3</span><h3 class="h3">Quiz</h3><p class="muted">Des questions, des équipes, un buzzer&nbsp;: de quoi animer le repas entre deux danses.</p></div>
@@ -333,7 +335,7 @@ if(true&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.c
     </div>
     <div class="zone__grid" style="margin-top:clamp(28px,4vw,56px)">
       <div class="radar" data-zone>
-        <div class="radar__bg"><div class="ph cover" data-ph="road" data-grok="G14" data-seed="41" role="img" aria-label="Route de campagne la nuit, traînées de phares (visuel provisoire)"></div></div>
+        <div class="radar__bg"><img src="assets/img/grok/g14-zone-route-nuit-1168.webp" srcset="assets/img/grok/g14-zone-route-nuit-640.webp 640w, assets/img/grok/g14-zone-route-nuit-1168.webp 1168w" sizes="100vw" width="1168" height="784" alt="Route de campagne la nuit, traînées de phares" loading="lazy" decoding="async" class="grok-img cover"></div>
         <canvas data-zone-canvas aria-hidden="true"></canvas>
         <div class="radar__labels" data-zone-labels></div>
         <div class="radar__legend" aria-hidden="true"><span><i></i>Communes citées</span><span><i class="w"></i>Repères</span></div>
@@ -369,7 +371,7 @@ if(true&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.c
       <p class="note" style="margin-top:22px;max-width:48ch" data-reveal="fade"><span aria-hidden="true">✓</span><span><strong>Aucun avis inventé.</strong> Cette section affichera les avis réels (Google, Facebook) dès que les liens seront fournis. <span class="todo">avis à fournir</span></span></p>
     </div>
     <div class="crate" data-crate aria-hidden="true">
-      <div class="crate__bg"><div class="ph cover" data-ph="crate" data-grok="G15" data-seed="51" role="img" aria-label="Bac de vinyles éclairé de côté (visuel provisoire)"></div></div>
+      <div class="crate__bg"><img src="assets/img/grok/g15-livre-or-bac-vinyles-1168.webp" srcset="assets/img/grok/g15-livre-or-bac-vinyles-640.webp 640w, assets/img/grok/g15-livre-or-bac-vinyles-1168.webp 1168w" sizes="100vw" width="1168" height="784" alt="Bac de vinyles éclairé de côté" loading="lazy" decoding="async" class="grok-img cover"></div>
       <div class="crate__box">
         <div class="crate__records" data-crate-records>
           <div class="rec" style="--i:0;--rz:-9deg;--z:1"><span>Votre avis ici</span></div>
@@ -384,7 +386,7 @@ if(true&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.c
 </section>
 
 <section class="section cta" data-cta aria-labelledby="cta-title">
-  <div class="cta__bg"><div class="ph cover" data-ph="deck" data-grok="G17" data-seed="7" role="img" aria-label="Mains sur une platine, en gros plan (visuel provisoire)"></div></div>
+  <div class="cta__bg"><img src="assets/img/grok/g17-appel-mains-platine-1168.webp" srcset="assets/img/grok/g17-appel-mains-platine-640.webp 640w, assets/img/grok/g17-appel-mains-platine-1168.webp 1168w" sizes="100vw" width="1168" height="784" alt="" aria-hidden="true" loading="lazy" decoding="async" class="grok-img cover"></div>
   <div class="shell">
     <p class="track">Dernière piste</p>
     <h2 class="cta__title" id="cta-title" data-cta-title style="margin-top:22px">On lance<br>le son&nbsp;?</h2>

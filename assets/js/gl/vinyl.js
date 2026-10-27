@@ -12,6 +12,7 @@ precision highp float;
 in vec2 vUv; out vec4 fragColor;
 uniform vec2 uRes; uniform float uTime; uniform float uRot; uniform vec2 uMouse; uniform vec2 uCenter; uniform float uRadius;
 uniform float uLevel; uniform vec3 uTint; uniform float uFade; uniform sampler2D uLabel; uniform vec2 uTilt; uniform float uBeams;
+uniform sampler2D uBg; uniform float uBgAsp; uniform float uHasBg; uniform sampler2D uHaze; uniform float uHasHaze;
 
 float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
 float noise(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.-2.*f);
@@ -23,7 +24,16 @@ mat3 rotY(float a){ float c = cos(a), s = sin(a); return mat3(c,0,-s, 0,1,0, s,0
 vec3 background(vec2 frag){
   vec2 uv = frag / uRes; float asp = uRes.x / uRes.y;
   vec3 col = vec3(.012, .014, .018);
-  float hz = fbm(vec2(uv.x*asp*2.2, uv.y*2.2) + vec2(uTime*.03, -uTime*.02));
+  float hz;
+  if (uHasHaze > .5) hz = texture(uHaze, vec2(uv.x*asp*.55 + uTime*.012, uv.y*.85 - uTime*.007)).g * 1.35;
+  else hz = fbm(vec2(uv.x*asp*2.2, uv.y*2.2) + vec2(uTime*.03, -uTime*.02));
+  if (uHasBg > .5) {
+    vec2 b = uv - .5;
+    if (asp > uBgAsp) b.y *= uBgAsp / asp; else b.x *= asp / uBgAsp;
+    b = b * (.96 - .02 * sin(uTime * .05)) + .5 - uMouse * .008;
+    vec3 bg = texture(uBg, b).rgb;
+    col = mix(col, pow(bg, vec3(1.08)) * (.6 + uLevel * .12), uBeams);
+  }
   vec2 o = vec2(.5*asp, 1.1); vec2 p = vec2(uv.x*asp, uv.y); vec2 d = p - o;
   float ang = atan(d.x, -d.y); float dist = length(d);
   float beams = 0.;
@@ -33,13 +43,13 @@ vec3 background(vec2 frag){
     float w = .011 + .006 * sin(fi*3.1);
     beams += exp(-pow((ang - a)/w, 2.)) * (.55 + .45*sin(fi*2.3 + uTime*.5));
   }
-  beams *= smoothstep(1.7, 0., dist) * (.35 + .9*hz) * uBeams;
+  beams *= smoothstep(1.7, 0., dist) * (.35 + .9*hz) * uBeams * (1. - uHasBg * .55);
   float wb = 0.;
   for (int i = 0; i < 2; i++){ float fi = float(i); float a = sin(uTime*.22 + fi*3.14) * .55; wb += exp(-pow((ang - a)/.006, 2.)); }
   wb *= smoothstep(1.5, 0., dist) * (.3 + .7*hz) * .5 * uBeams;
   col += uTint * beams * (.42 + uLevel*.3);
   col += vec3(.9, .95, 1.) * wb * .35;
-  col += uTint * hz * .05 + vec3(hz*hz*.03);
+  col += uTint * hz * .05 * (1. - uHasBg * .4) + vec3(hz*hz*.03);
   col += uTint * .25 * exp(-dist*6.) * uBeams;
   float sp = step(.9975, hash(floor(frag/3.) + floor(uTime*2.)));
   col += sp * .35 * beams;
@@ -133,7 +143,20 @@ export function initVinyl(canvas) {
   const uniforms = {
     uRes: { value: [1, 1] }, uTime: { value: 0 }, uRot: { value: 0 }, uMouse: { value: [0, 0] }, uCenter: { value: [0, 0] }, uRadius: { value: 300 },
     uLevel: { value: 0 }, uTint: { value: tint.slice() }, uFade: { value: 0 }, uLabel: { value: label }, uTilt: { value: [0.82, -0.28] }, uBeams: { value: 0 },
+    uBg: { value: new Texture(gl, { generateMipmaps: false, minFilter: gl.LINEAR }) }, uBgAsp: { value: 1.5 }, uHasBg: { value: 0 },
+    uHaze: { value: new Texture(gl, { generateMipmaps: false, minFilter: gl.LINEAR, wrapS: gl.MIRRORED_REPEAT, wrapT: gl.MIRRORED_REPEAT }) }, uHasHaze: { value: 0 },
   };
+  // Photos d'ambiance (Grok) : fond derrière le disque et texture de brume
+  const loadTex = (src, tex, onDone) => { const img = new Image(); img.decoding = 'async'; img.onload = () => { tex.image = img; onDone(img); }; img.src = src; };
+  let bgMobile = null;
+  const loadBg = () => {
+    const mob = (canvas.parentElement.clientWidth || window.innerWidth) < 900;
+    if (bgMobile === mob) return; bgMobile = mob;
+    loadTex(mob ? 'assets/img/grok/g02-accueil-ouverture-784.webp' : 'assets/img/grok/g01-accueil-ouverture-1168.webp', uniforms.uBg.value, (img) => { uniforms.uBgAsp.value = img.naturalWidth / img.naturalHeight; uniforms.uHasBg.value = 1; });
+  };
+  loadBg();
+  window.addEventListener('resize', loadBg);
+  loadTex('assets/img/grok/g29-texture-brume-640.webp', uniforms.uHaze.value, () => { uniforms.uHasHaze.value = 1; });
   const program = new Program(gl, { vertex, fragment, uniforms, depthTest: false, depthWrite: false });
   const mesh = new Mesh(gl, { geometry: new Triangle(gl), program });
 
