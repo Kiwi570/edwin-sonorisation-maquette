@@ -1,3 +1,0 @@
-Images Grok à déposer ici (voir le document « Images à créer avec Grok »).
-Noms attendus : g01-accueil-ouverture-16x9 … g30-texture-poussiere-faisceau-16x9 (.jpg ou .png).
-Elles seront vérifiées, converties en WebP et branchées à la place des visuels provisoires dans la version suivante.
