@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prestations DJ pour vos événements privés · Sonorisation, Bruay-La-Buissière</title>
+<meta name="description" content="Mariage, anniversaire, baptême, communion, départ en retraite, soirée privée : un DJ, du matériel son et lumière, karaoké, jeux musicaux et quiz.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#07080a">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Prestations DJ pour vos événements privés · Sonorisation, Bruay-La-Buissière">
+<meta property="og:description" content="Mariage, anniversaire, baptême, communion, départ en retraite, soirée privée : un DJ, du matériel son et lumière, karaoké, jeux musicaux et quiz.">
+<link rel="icon" href="assets/img/brand/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/unbounded-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/main.css">
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');var c=null;try{c=localStorage.getItem('sono-calm')}catch(e){}
+if(c==='1'||(c===null&&window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))d.classList.add('calm');
+try{if(sessionStorage.getItem('sono-wipe')==='1')d.classList.add('is-arriving');
+if(false&&!sessionStorage.getItem('sono-seen')&&!d.classList.contains('calm'))d.classList.add('show-loader')}catch(e){}})();
+</script>
+</head>
+<body data-page="prestations">
+<a class="skip-link" href="#main">Aller au contenu</a>
+<div class="wipe" data-wipe aria-hidden="true"><div class="wipe__panel"></div><div class="wipe__laser"></div><div class="wipe__label" data-wipe-label></div></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true" data-cursor><div class="cursor__ring" data-cursor-ring><span class="cursor__label" data-cursor-text></span></div><div class="cursor__dot" data-cursor-dot></div></div>
+<div class="tonearm" aria-hidden="true">
+  <svg viewBox="0 0 64 300">
+    <path d="M10 40 A 260 260 0 0 0 10 290" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-dasharray="2 5"/>
+    <g data-arm style="transform-origin:44px 16px">
+      <line x1="44" y1="16" x2="44" y2="236" stroke="#c9cbc8" stroke-width="2.5" stroke-linecap="round"/>
+      <rect x="37" y="232" width="14" height="24" rx="3" fill="#23272c" stroke="rgba(255,255,255,.35)"/>
+      <circle cx="44" cy="260" r="2.6" fill="var(--tint)" data-needle/>
+    </g>
+    <circle cx="44" cy="16" r="12" fill="#1c2025" stroke="rgba(255,255,255,.22)"/>
+    <circle cx="44" cy="16" r="4" fill="var(--tint)"/>
+  </svg>
+</div>
+<div class="deck" data-deck>
+  <div class="deck__panel" role="group" aria-label="Lecteur">
+    <button class="deck__btn" type="button" aria-pressed="false" data-sound-toggle>
+      <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="deck__label-long">Son démo</span><span class="deck__label-short">Son</span>
+    </button>
+    <button class="deck__btn" type="button" aria-pressed="false" data-calm-toggle>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span class="deck__label-long">Mode calme</span><span class="deck__label-short">Calme</span>
+    </button>
+    <div class="xfader" aria-hidden="true">
+      <span class="xfader__time" data-time>A · 00:00</span>
+      <div class="xfader__track"><div class="xfader__fill" data-xfill></div><div class="xfader__knob" data-xknob></div></div>
+    </div>
+  </div>
+  <div class="deck__hint" data-deck-hint role="status" aria-live="polite"></div>
+  <div class="deck__call"><a class="btn btn--sm" href="tel:+33786399156"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="btn__label">Appeler</span></a></div>
+</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="wave" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.004 0.022" numOctaves="1" seed="4" result="n" data-wave-turb/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G" data-wave-disp/>
+  </filter>
+</svg>
+<header class="header" data-header>
+  <div class="shell">
+    <a class="logo" href="index.html" aria-label="Sonorisation — accueil"><img src="assets/img/brand/sonorisation-logo.png" alt="Sonorisation" width="388" height="125"></a>
+    <nav class="nav" aria-label="Navigation principale"><ol>
+<li><a href="index.html"><span>A</span>Accueil</a></li>
+<li><a href="prestations.html" aria-current="page"><span>B</span>Prestations</a></li>
+<li><a href="livre-d-or.html"><span>C</span>Livre d&#x27;or</a></li>
+<li><a href="contact.html"><span>D</span>Contact</a></li>
+    </ol></nav>
+    <div class="header__right">
+      <span class="status-pill" data-hours><span class="dot"></span><span data-hours-text>Horaires d’appel</span></span>
+      <a class="btn btn--sm btn--call" href="tel:+33786399156" data-magnetic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="btn__label">07 86 39 91 56</span></a>
+      <a class="btn btn--sm btn--ghost header__devis" href="contact.html#devis" data-magnetic><span class="btn__label">Devis</span></a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-btn><span class="sr-only">Ouvrir le menu</span><i aria-hidden="true"></i></button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="menu" data-menu aria-hidden="true" inert>
+  <div class="menu__vinyl" aria-hidden="true"></div>
+  <nav aria-label="Menu"><ol>
+<li><a href="index.html"><span>A</span>Accueil</a></li>
+<li><a href="prestations.html" aria-current="page"><span>B</span>Prestations</a></li>
+<li><a href="livre-d-or.html"><span>C</span>Livre d&#x27;or</a></li>
+<li><a href="contact.html"><span>D</span>Contact</a></li>
+  </ol></nav>
+  <div class="menu__foot">
+    <a class="btn" href="tel:+33786399156"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="btn__label">Appeler · 07 86 39 91 56</span></a>
+    <p class="mono" data-hours><span class="dot" style="display:inline-block;margin-right:.6em"></span><span data-hours-text>Horaires d’appel</span></p>
+  </div>
+</div>
+<main id="main">
+<!-- ============ B0 — OUVERTURE ============ -->
+<section class="phero" data-phero aria-labelledby="p-title">
+  <div class="phero__media" aria-hidden="true">
+    <div class="phero__disc" data-phero-disc>
+      <img src="assets/img/real/bar-scene-barres-led-1600.webp" srcset="assets/img/real/bar-scene-barres-led-480.webp 480w, assets/img/real/bar-scene-barres-led-960.webp 960w, assets/img/real/bar-scene-barres-led-1600.webp 1600w" sizes="100vw" width="2000" height="1500" alt="Petite scène installée dans un bar, barres LED colorées, enceintes et micros" loading="eager" decoding="async" class="photo-treat">
+    </div>
+    <div class="phero__ring" data-phero-ring></div>
+  </div>
+  <p class="phero__face" aria-hidden="true">Face B<br>Prestations</p>
+  <div class="phero__content">
+    <div class="shell">
+      <p class="track" data-phero-fade>B0 — Prestations</p>
+      <h1 class="display phero__title" id="p-title">
+        <span class="line-mask"><span class="line" data-phero-line>Un DJ pour</span></span>
+        <span class="line-mask"><span class="line accent" data-phero-line>tous vos</span></span>
+        <span class="line-mask"><span class="line" data-phero-line>événements</span></span>
+      </h1>
+      <p class="lead phero__sub" data-phero-fade>Départ en retraite, anniversaire, mariage, baptême, communion ou petit concert privé&nbsp;: je vous accompagne tout au long de votre événement, avec une animation à la hauteur de vos attentes.</p>
+      <div class="btn-row" style="margin-top:28px" data-phero-fade>
+        <a class="btn" href="contact.html#devis" data-magnetic><span class="btn__label">Demander un devis détaillé</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--ghost" href="#soiree-type" data-magnetic><span class="btn__label">Voir une soirée type</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B1 — TOUS VOS ÉVÉNEMENTS ============ -->
+<section class="section" id="evenements" aria-labelledby="evl-title">
+  <div class="shell">
+    <div class="sec-head sec-head--split">
+      <div>
+        <p class="track">B1 — Le programme</p>
+        <h2 class="h2" id="evl-title" style="margin-top:18px" data-reveal="lines">Je prends en charge tous types d’événements.</h2>
+      </div>
+      <p class="lead" data-reveal="fade">Pour chacun, une animation pensée pour vos invités&nbsp;: musique, jeux et ambiance lumineuse.</p>
+    </div>
+    <ol class="evlist" data-evlist>
+      <li data-ev-key="0"><div class="evlist__row"><span class="evlist__n">B1.1</span><span class="evlist__t">Mariage</span><span class="evlist__d">Du vin d’honneur à la dernière danse, au rythme de votre journée.</span>
+        <div class="evlist__thumb"><img src="assets/img/real/mariage-scene-just-married-949.webp" srcset="assets/img/real/mariage-scene-just-married-480.webp 480w, assets/img/real/mariage-scene-just-married-949.webp 949w" sizes="92vw" width="949" height="960" alt="Scène de mariage avec banderole Just married" loading="lazy" decoding="async" class="photo-treat"></div></div></li>
+      <li data-ev-key="1"><div class="evlist__row"><span class="evlist__n">B1.2</span><span class="evlist__t">Anniversaire</span><span class="evlist__d">Des tubes pour toutes les générations, du gâteau à la piste.</span>
+        <div class="evlist__thumb"><img src="assets/img/real/anniversaire-20-ans-podium-720.webp" srcset="assets/img/real/anniversaire-20-ans-podium-480.webp 480w, assets/img/real/anniversaire-20-ans-podium-720.webp 720w" sizes="92vw" width="720" height="960" alt="Podium DJ pour un anniversaire de 20 ans" loading="lazy" decoding="async" class="photo-treat"></div></div></li>
+      <li data-ev-key="2"><div class="evlist__row"><span class="evlist__n">B1.3</span><span class="evlist__t">Baptême</span><span class="evlist__d">Une fête de famille, au bon volume pour petits et grands.</span>
+        <div class="evlist__thumb"><div class="ph " data-ph="table" data-grok="G03" data-seed="3" role="img" aria-label="Table de fête décorée pour un baptême (visuel provisoire)"></div></div></div></li>
+      <li data-ev-key="3"><div class="evlist__row"><span class="evlist__n">B1.4</span><span class="evlist__t">Communion</span><span class="evlist__d">Une ambiance douce, des jeux pour les enfants comme pour les adultes.</span>
+        <div class="evlist__thumb"><div class="ph " data-ph="table" data-grok="G04" data-seed="11" data-tint="#f2e6c9" role="img" aria-label="Table de repas de communion (visuel provisoire)"></div></div></div></li>
+      <li data-ev-key="4"><div class="evlist__row"><span class="evlist__n">B1.5</span><span class="evlist__t">Départ en retraite</span><span class="evlist__d">Une soirée à la hauteur d’une carrière, entre collègues et amis.</span>
+        <div class="evlist__thumb"><div class="ph " data-ph="toast" data-grok="G05" data-seed="5" role="img" aria-label="Coupes levées pour un toast (visuel provisoire)"></div></div></div></li>
+      <li data-ev-key="5"><div class="evlist__row"><span class="evlist__n">B1.6</span><span class="evlist__t">Soirée privée</span><span class="evlist__d">Votre soirée, votre playlist, vos invités.</span>
+        <div class="evlist__thumb"><img src="assets/img/real/piste-lumieres-ambre-960.webp" srcset="assets/img/real/piste-lumieres-ambre-480.webp 480w, assets/img/real/piste-lumieres-ambre-960.webp 960w" sizes="92vw" width="960" height="720" alt="Piste de danse sous des lumières ambrées" loading="lazy" decoding="async" class="photo-treat"></div></div></li>
+      <li data-ev-key="6"><div class="evlist__row"><span class="evlist__n">B1.7</span><span class="evlist__t">Petit concert privé</span><span class="evlist__d">La sonorisation et la lumière d’une petite scène.</span>
+        <div class="evlist__thumb"><img src="assets/img/real/bar-scene-barres-led-1600.webp" srcset="assets/img/real/bar-scene-barres-led-480.webp 480w, assets/img/real/bar-scene-barres-led-960.webp 960w, assets/img/real/bar-scene-barres-led-1600.webp 1600w" sizes="92vw" width="2000" height="1500" alt="Petite scène dans un bar avec micros et barres LED" loading="lazy" decoding="async" class="photo-treat"></div></div></li>
+    </ol>
+  </div>
+  <div class="float-img" data-float-img aria-hidden="true">
+    <img src="assets/img/real/mariage-scene-just-married-949.webp" srcset="assets/img/real/mariage-scene-just-married-480.webp 480w, assets/img/real/mariage-scene-just-married-949.webp 949w" sizes="380px" width="949" height="960" alt="" loading="lazy" decoding="async" class="photo-treat">
+    <img src="assets/img/real/anniversaire-20-ans-podium-720.webp" srcset="assets/img/real/anniversaire-20-ans-podium-480.webp 480w, assets/img/real/anniversaire-20-ans-podium-720.webp 720w" sizes="380px" width="720" height="960" alt="" loading="lazy" decoding="async" class="photo-treat">
+    <div class="ph " data-ph="table" data-grok="G03" data-seed="3" role="img" aria-label=" (visuel provisoire)"></div>
+    <div class="ph " data-ph="table" data-grok="G04" data-seed="11" data-tint="#f2e6c9" role="img" aria-label=" (visuel provisoire)"></div>
+    <div class="ph " data-ph="toast" data-grok="G05" data-seed="5" role="img" aria-label=" (visuel provisoire)"></div>
+    <img src="assets/img/real/piste-lumieres-ambre-960.webp" srcset="assets/img/real/piste-lumieres-ambre-480.webp 480w, assets/img/real/piste-lumieres-ambre-960.webp 960w" sizes="380px" width="960" height="720" alt="" loading="lazy" decoding="async" class="photo-treat">
+    <img src="assets/img/real/bar-scene-barres-led-1600.webp" srcset="assets/img/real/bar-scene-barres-led-480.webp 480w, assets/img/real/bar-scene-barres-led-960.webp 960w, assets/img/real/bar-scene-barres-led-1600.webp 1600w" sizes="380px" width="2000" height="1500" alt="" loading="lazy" decoding="async" class="photo-treat">
+  </div>
+</section>
+
+<!-- ============ B2 — SOIRÉE TYPE ============ -->
+<section class="night" id="soiree-type" data-night aria-labelledby="night-title">
+  <div class="night__pin" data-night-pin>
+    <div class="shell night__grid">
+      <div>
+        <p class="track">B2 — Une soirée type</p>
+        <h2 class="h2" id="night-title" style="margin-top:18px">Le bon son à chaque&nbsp;instant.</h2>
+        <p class="lead" style="margin-top:20px">Un DJ sait ajuster l’ambiance en fonction de vos attentes et du ressenti de la soirée. Faites défiler&nbsp;: l’égaliseur suit l’intensité.</p>
+        <div class="eq" data-eq style="margin-top:34px" aria-hidden="true">
+          <div class="eq__col" data-eq-col><div class="eq__bars"></div><span class="eq__name">Vin d’honneur</span></div>
+          <div class="eq__col" data-eq-col><div class="eq__bars"></div><span class="eq__name">Repas</span></div>
+          <div class="eq__col" data-eq-col><div class="eq__bars"></div><span class="eq__name">Ouverture du bal</span></div>
+          <div class="eq__col" data-eq-col><div class="eq__bars"></div><span class="eq__name">Piste</span></div>
+        </div>
+        <p class="mono muted" style="margin-top:20px">Exemple de déroulé, à adapter avec vous <span class="todo">à valider</span></p>
+      </div>
+      <div class="stages" data-stages>
+        <article class="stage is-active" data-stage>
+          <div class="stage__media"><div class="ph " data-ph="glasses" data-grok="G19" data-seed="61" role="img" aria-label="Coupes de vin pétillant sur un plateau, en début de soirée (visuel provisoire)"></div></div>
+          <p class="night__time">01 · Vin d’honneur</p>
+          <h3 class="h3">Accueillir vos invités</h3>
+          <p class="muted">Une musique d’accueil discrète pendant que les invités arrivent et se retrouvent.</p>
+        </article>
+        <article class="stage" data-stage>
+          <div class="stage__media"><div class="ph " data-ph="banquet" data-grok="G20" data-seed="62" role="img" aria-label="Tables de banquet dressées avec bougies (visuel provisoire)"></div></div>
+          <p class="night__time">02 · Repas</p>
+          <h3 class="h3">Laisser place aux conversations</h3>
+          <p class="muted">Un fond musical au bon volume, et si vous le souhaitez, jeux ou quiz entre les plats.</p>
+        </article>
+        <article class="stage" data-stage>
+          <div class="stage__media"><div class="ph " data-ph="spot" data-grok="G21" data-seed="63" role="img" aria-label="Couple en silhouette sous un projecteur (visuel provisoire)"></div></div>
+          <p class="night__time">03 · Ouverture du bal</p>
+          <h3 class="h3">Le moment fort</h3>
+          <p class="muted">La première danse, lancée au bon moment, sous la bonne lumière.</p>
+        </article>
+        <article class="stage" data-stage>
+          <div class="stage__media"><div class="ph " data-ph="beams" data-grok="G22" data-seed="64" role="img" aria-label="Foule en silhouette, bras levés, faisceaux verts (visuel provisoire)"></div></div>
+          <p class="night__time">04 · Piste</p>
+          <h3 class="h3">Jusqu’au bout de la nuit</h3>
+          <p class="muted">Des titres choisis selon vos invités, lounge, dansants, rétro ou modernes.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B3 — PLAYLIST ============ -->
+<section class="section" id="playlist" aria-labelledby="pl-title">
+  <div class="shell flip">
+    <div>
+      <p class="track">B3 — Musique sur mesure</p>
+      <h2 class="h2" id="pl-title" style="margin-top:18px" data-reveal="lines">Votre playlist, mes&nbsp;platines.</h2>
+      <p class="lead" style="margin-top:20px" data-reveal="fade">Que vous ayez des préférences en termes de genres musicaux ou que vous souhaitiez une playlist personnalisée, je m’adapte à vos goûts et à ceux de vos invités.</p>
+      <div class="flip__ctrl" data-reveal="fade">
+        <button class="icon-btn" type="button" data-flip-prev aria-label="Disque précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="icon-btn" type="button" data-flip-next aria-label="Disque suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+        <p class="mono muted" style="align-self:center;margin-left:8px" data-flip-count aria-live="polite">01 / 05</p>
+      </div>
+    </div>
+    <div class="flip__stack" data-flip aria-roledescription="carrousel" aria-label="Styles musicaux">
+      <article class="flip__card" data-flip-card><div class="ph " data-ph="lounge" data-grok="G07" data-seed="21" data-tint="#ffb35c" role="img" aria-label="Ambiance lounge (visuel provisoire)"></div><span class="mono">Style 01</span><h3 class="h3">Lounge</h3></article>
+      <article class="flip__card" data-flip-card><div class="ph " data-ph="beams" data-grok="G08" data-seed="22" role="img" aria-label="Ambiance dansante (visuel provisoire)"></div><span class="mono">Style 02</span><h3 class="h3">Dansant</h3></article>
+      <article class="flip__card" data-flip-card><div class="ph " data-ph="ball" data-grok="G09" data-seed="23" data-tint="#ff5fa2" role="img" aria-label="Ambiance rétro (visuel provisoire)"></div><span class="mono">Style 03</span><h3 class="h3">Rétro</h3></article>
+      <article class="flip__card" data-flip-card><div class="ph " data-ph="grid" data-grok="G10" data-seed="24" data-tint="#7fe0ff" role="img" aria-label="Ambiance moderne (visuel provisoire)"></div><span class="mono">Style 04</span><h3 class="h3">Moderne</h3></article>
+      <article class="flip__card" data-flip-card><div class="ph " data-ph="vinyls" data-grok="G23" data-seed="25" role="img" aria-label="Vinyles en éventail (visuel provisoire)"></div><span class="mono">Sur mesure</span><h3 class="h3">Votre playlist</h3></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B4 — MATÉRIEL ============ -->
+<section class="section gear" id="materiel" aria-labelledby="gear-title">
+  <div class="gear__beams" aria-hidden="true" data-gear-beams>
+    <i style="--x:2%;--a:-18deg"></i><i style="--x:24%;--a:10deg"></i><i style="--x:46%;--a:-8deg"></i><i style="--x:68%;--a:16deg"></i>
+  </div>
+  <div class="shell">
+    <div class="sec-head sec-head--split">
+      <div>
+        <p class="track">B4 — Son &amp; lumière</p>
+        <h2 class="h2" id="gear-title" style="margin-top:18px" data-reveal="lines">Un matériel performant.</h2>
+      </div>
+      <p class="lead" data-reveal="fade">Grâce à un matériel performant, j’assure une restitution sonore et lumineuse sans faille, pour un spectacle visuel et sonore à la hauteur de votre soirée.</p>
+    </div>
+    <div class="gear__grid">
+      <div class="gear__photos">
+        <div class="media media--frame media--wave" data-reveal="img"><img src="assets/img/real/scene-exterieure-podium-1600.webp" srcset="assets/img/real/scene-exterieure-podium-480.webp 480w, assets/img/real/scene-exterieure-podium-960.webp 960w, assets/img/real/scene-exterieure-podium-1600.webp 1600w" sizes="(min-width: 960px) 56vw, 100vw" width="1920" height="900" alt="Scène extérieure : podium, structure lumière et enceintes sur pied" loading="lazy" decoding="async" class="photo-treat"><span class="media__cap">Photo réelle · scène extérieure</span></div>
+        <div class="media media--frame media--wave"><img src="assets/img/real/bar-scene-barres-led-1600.webp" srcset="assets/img/real/bar-scene-barres-led-480.webp 480w, assets/img/real/bar-scene-barres-led-960.webp 960w, assets/img/real/bar-scene-barres-led-1600.webp 1600w" sizes="(min-width: 960px) 32vw, 60vw" width="2000" height="1500" alt="Installation dans un bar avec barres LED" loading="lazy" decoding="async" class="photo-treat"><span class="media__cap">Photo réelle</span></div>
+        <div class="media media--frame"><div class="ph " data-ph="truss" data-grok="G24" data-seed="71" role="img" aria-label="Structure lumière et projecteurs dans la brume (visuel provisoire)"></div></div>
+      </div>
+      <div>
+        <p class="mono muted" style="margin-bottom:8px">Visible sur les photos</p>
+        <ul class="gear__list">
+          <li>Podium et structure lumière</li>
+          <li>Barres LED et projecteurs à effets</li>
+          <li>Enceintes sur pied</li>
+          <li>Micros pour les discours, le karaoké et les petits concerts</li>
+          <li>Écran de projection (photo de mariage)</li>
+        </ul>
+        <p class="note" style="margin-top:22px"><span aria-hidden="true">✎</span><span><strong>Liste détaillée du matériel</strong> (marques, puissance, nombre d’enceintes et de jeux de lumière) <span class="todo">à compléter</span></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B5 — ANIMATIONS ============ -->
+<section class="section anims" id="animations" aria-labelledby="anims-title">
+  <div class="shell">
+    <div class="sec-head sec-head--split">
+      <div>
+        <p class="track">B5 — Animations</p>
+        <h2 class="h2" id="anims-title" style="margin-top:18px" data-reveal="lines">Des jeux pour tous vos invités.</h2>
+      </div>
+      <p class="lead" data-reveal="fade">Je vous propose une variété de jeux divertissants&nbsp;: des jeux traditionnels ou des activités plus originales, selon vos envies.</p>
+    </div>
+    <div class="anims__grid">
+      <article class="acard" data-tilt><div class="acard__inner"><div class="acard__media"><div class="ph " data-ph="mic" data-grok="G11" data-seed="31" role="img" aria-label="Micro sans fil levé sous un projecteur (visuel provisoire)"></div><div class="acard__toy"><div class="karaoke" data-karaoke aria-hidden="true"><i></i><i style="width:82%"></i><i style="width:64%"></i></div></div></div>
+        <div class="acard__body"><span class="mono accent">B5.1</span><h3 class="h3">Karaoké</h3><p class="muted">Micro en main&nbsp;: vos invités prennent la scène, le temps d’un refrain.</p></div></div><div class="acard__glare"></div></article>
+      <article class="acard" data-tilt><div class="acard__inner"><div class="acard__media"><div class="ph " data-ph="chairs" data-grok="G12" data-seed="32" role="img" aria-label="Chaises musicales sur une piste (visuel provisoire)"></div><div class="acard__toy"><div class="chairs" data-chairs aria-hidden="true"></div></div></div>
+        <div class="acard__body"><span class="mono accent">B5.2</span><h3 class="h3">Jeux musicaux</h3><p class="muted">Des jeux traditionnels aux activités plus originales, pour toutes les générations.</p></div></div><div class="acard__glare"></div></article>
+      <article class="acard" data-tilt><div class="acard__inner"><div class="acard__media"><div class="ph " data-ph="buzzers" data-grok="G13" data-seed="33" role="img" aria-label="Buzzers de quiz sur une table (visuel provisoire)"></div><div class="acard__toy"><div class="buzzer-wrap"><button class="buzzer" type="button" data-buzzer aria-label="Appuyer sur le buzzer"></button><span class="mono" data-buzz-text aria-live="polite">Appuyez&nbsp;!</span></div></div></div>
+        <div class="acard__body"><span class="mono accent">B5.3</span><h3 class="h3">Quiz</h3><p class="muted">Des questions, des équipes, un buzzer&nbsp;: de quoi animer le repas entre deux danses.</p></div></div><div class="acard__glare"></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B6 — GALERIE ============ -->
+<section class="section" id="galerie" aria-labelledby="strip-title">
+  <div class="shell sec-head sec-head--split">
+    <div>
+      <p class="track">B6 — Les photos</p>
+      <h2 class="h2" id="strip-title" style="margin-top:18px" data-reveal="lines">Quelques prestations.</h2>
+    </div>
+    <p class="lead" data-reveal="fade">Découvrez quelques photos réelles des animations que je propose lors des événements privés. Faites glisser la bande.</p>
+  </div>
+  <div class="strip" data-strip data-cursor-label="Glisser">
+    <div class="strip__track">
+      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:949/960"><img src="assets/img/real/mariage-scene-just-married-949.webp" srcset="assets/img/real/mariage-scene-just-married-480.webp 480w, assets/img/real/mariage-scene-just-married-949.webp 949w" sizes="440px" width="949" height="960" alt="Salle de mariage, scène et écran" loading="lazy" decoding="async" class="photo-treat"></button>
+      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:2000/1500"><img src="assets/img/real/bar-scene-barres-led-1600.webp" srcset="assets/img/real/bar-scene-barres-led-480.webp 480w, assets/img/real/bar-scene-barres-led-960.webp 960w, assets/img/real/bar-scene-barres-led-1600.webp 1600w" sizes="600px" width="2000" height="1500" alt="Petite scène dans un bar, barres LED" loading="lazy" decoding="async" class="photo-treat"></button>
+      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:720/960"><img src="assets/img/real/anniversaire-20-ans-podium-720.webp" srcset="assets/img/real/anniversaire-20-ans-podium-480.webp 480w, assets/img/real/anniversaire-20-ans-podium-720.webp 720w" sizes="340px" width="720" height="960" alt="Podium DJ, anniversaire 20 ans" loading="lazy" decoding="async" class="photo-treat"></button>
+      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:1920/900"><img src="assets/img/real/scene-exterieure-podium-1600.webp" srcset="assets/img/real/scene-exterieure-podium-480.webp 480w, assets/img/real/scene-exterieure-podium-960.webp 960w, assets/img/real/scene-exterieure-podium-1600.webp 1600w" sizes="900px" width="1920" height="900" alt="Scène en extérieur" loading="lazy" decoding="async" class="photo-treat"></button>
+      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:1728/1296"><img src="assets/img/real/salle-faisceau-bleu-1600.webp" srcset="assets/img/real/salle-faisceau-bleu-480.webp 480w, assets/img/real/salle-faisceau-bleu-960.webp 960w, assets/img/real/salle-faisceau-bleu-1600.webp 1600w" sizes="600px" width="1728" height="1296" alt="Salle en fête, faisceau bleu" loading="lazy" decoding="async" class="photo-treat"></button>
+      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:960/720"><img src="assets/img/real/piste-lumieres-ambre-960.webp" srcset="assets/img/real/piste-lumieres-ambre-480.webp 480w, assets/img/real/piste-lumieres-ambre-960.webp 960w" sizes="600px" width="960" height="720" alt="Piste sous des lumières ambrées" loading="lazy" decoding="async" class="photo-treat"></button>
+      <button type="button" class="media media--frame" data-lightbox style="aspect-ratio:526/394"><img src="assets/img/real/piste-foule-bleue-526.webp" srcset="assets/img/real/piste-foule-bleue-480.webp 480w, assets/img/real/piste-foule-bleue-526.webp 526w" sizes="600px" width="526" height="394" alt="Invités sur la piste, lumière bleue" loading="lazy" decoding="async" class="photo-treat"></button>
+    </div>
+  </div>
+</section>
+
+<section class="section cta" data-cta aria-labelledby="cta-title">
+  <div class="cta__bg"><div class="ph cover" data-ph="deck" data-grok="G17" data-seed="7" role="img" aria-label="Mains sur une platine, en gros plan (visuel provisoire)"></div></div>
+  <div class="shell">
+    <p class="track">Dernière piste</p>
+    <h2 class="cta__title" id="cta-title" data-cta-title style="margin-top:22px">On lance<br>le son&nbsp;?</h2>
+    <p class="cta__status" data-hours><span class="dot"></span><span data-hours-text>Horaires d’appel</span></p>
+    <div class="btn-row">
+      <a class="btn" href="contact.html#devis" data-magnetic><span class="btn__label">Construire mon devis</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn--ghost" href="tel:+33786399156" data-magnetic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="btn__label">Appeler</span></a>
+    </div>
+    <a class="cta__phone link-draw" href="tel:+33786399156">07 86 39 91 56</a>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__grid">
+      <div>
+        <img src="assets/img/brand/sonorisation-logo.png" alt="Sonorisation" width="388" height="125" style="width:170px" loading="lazy">
+        <p class="footer__big" style="margin-top:22px">DJ &amp; animation<br>à Bruay‑La‑Buissière</p>
+        <p class="muted" style="margin-top:12px;max-width:38ch">Mariages, anniversaires, baptêmes, communions, départs en retraite et soirées privées, dans un rayon de 50&nbsp;km.</p>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a class="link-draw" href="tel:+33786399156">07 86 39 91 56</a></li>
+          <li>62700 Bruay-La-Buissière</li>
+          <li>E-mail <span class="todo">à compléter</span></li>
+          <li>Facebook <span class="todo">lien à confirmer</span></li>
+          <li>Avis Google <span class="todo">lien à fournir</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Joignable</h2>
+        <ul>
+          <li>Lundi → jeudi · 16h30–19h00</li>
+          <li>Vendredi · 8h00–12h00 et 13h00–16h30</li>
+          <li data-hours style="display:flex;align-items:center;gap:.6em;margin-top:10px"><span class="dot"></span><span data-hours-text>Horaires d’appel</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Pages</h2>
+        <ul>
+          <li><a class="link-draw" href="index.html">A · Accueil</a></li>
+          <li><a class="link-draw" href="prestations.html">B · Prestations</a></li>
+          <li><a class="link-draw" href="livre-d-or.html">C · Livre d&#x27;or</a></li>
+          <li><a class="link-draw" href="contact.html">D · Contact</a></li>
+          <li><a class="link-draw" href="mentions-legales.html">Mentions légales &amp; RGPD</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Sonorisation</span>
+      <span>Maquette de démonstration · les mentions « à compléter » sont à valider avec le client</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/vendor/gsap.min.js" defer></script>
+<script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/js/vendor/SplitText.min.js" defer></script>
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
