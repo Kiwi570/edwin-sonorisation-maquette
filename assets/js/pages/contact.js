@@ -1,9 +1,9 @@
 // Contact (Face D) : devis en 6 étapes (erreurs sous les champs), horaires, numéro à copier
-import { state, $, $$, SITE, store } from '../core/state.js';
-import { simpleHero } from '../core/hero-simple.js';
-import { communeCombobox, describe, loadZoneData } from '../core/zonemap.js';
-import { scrollToTarget } from '../core/smooth.js';
-import { audio } from '../core/audio.js';
+import { state, $, $$, SITE, store } from '../core/state.js?v=20261027c';
+import { simpleHero } from '../core/hero-simple.js?v=20261027c';
+import { communeCombobox, describe, loadZoneData } from '../core/zonemap.js?v=20261027c';
+import { scrollToTarget } from '../core/smooth.js?v=20261027c';
+import { audio } from '../core/audio.js?v=20261027c';
 
 export default function contact() {
   const { gsap } = window;

@@ -1,5 +1,5 @@
 // Carte « radar » des 50 km + recherche de commune (distance à vol d'oiseau depuis Bruay-La-Buissière)
-import { SITE, state, on, $, $$, hexToRgb } from './state.js';
+import { SITE, state, on, $, $$, hexToRgb } from './state.js?v=20261027c';
 
 let dataPromise = null;
 export function loadZoneData() {

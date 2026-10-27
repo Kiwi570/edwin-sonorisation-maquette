@@ -1,6 +1,6 @@
 // En-tête, menu, curseur, boutons magnétiques, cartes 3D, bras de lecture, grain, onde au survol
-import { state, $, $$ } from './state.js';
-import { scrollProgress } from './smooth.js';
+import { state, $, $$ } from './state.js?v=20261027c';
+import { scrollProgress } from './smooth.js?v=20261027c';
 
 export function initGrain() {
   const c = document.createElement('canvas'); c.width = c.height = 160;

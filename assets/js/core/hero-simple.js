@@ -1,5 +1,5 @@
 // Ouverture des pages internes : titre sur les temps, visuel qui recule au défilement
-import { state, on, $, $$ } from './state.js';
+import { state, on, $, $$ } from './state.js?v=20261027c';
 
 export function simpleHero(root = document) {
   const { gsap } = window;

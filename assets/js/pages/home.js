@@ -1,8 +1,8 @@
 // Accueil (Face A)
-import { state, on, $, $$, setMood, MOODS } from '../core/state.js';
-import { setSound, audio } from '../core/deck.js';
-import { initZoneBlock } from '../core/zonemap.js';
-import { initAnimToys } from '../core/anims.js';
+import { state, on, $, $$, setMood, MOODS } from '../core/state.js?v=20261027c';
+import { setSound, audio } from '../core/deck.js?v=20261027c';
+import { initZoneBlock } from '../core/zonemap.js?v=20261027c';
+import { initAnimToys } from '../core/anims.js?v=20261027c';
 
 export default function home() {
   const { gsap, ScrollTrigger } = window;
@@ -17,7 +17,7 @@ export default function home() {
   if (!state.calm) {
     gsap.set(lines, { yPercent: 110 });
     gsap.set([kicker, ...fades], { opacity: 0, y: 24 });
-    import('../gl/vinyl.js').then(({ initVinyl }) => {
+    import('../gl/vinyl.js?v=20261027c').then(({ initVinyl }) => {
       vinyl = initVinyl($('[data-vinyl-gl]', hero));
       if (!vinyl) startFallbackSpin();
       if (introDone && vinyl) vinyl.intro(0);

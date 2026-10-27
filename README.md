@@ -25,7 +25,7 @@ Site statique (HTML, CSS, JavaScript), sans étape de construction, prêt pour V
 - Vidéos de prestations
 - Déroulé de la soirée type et étapes « Comment ça se passe » (exemples à valider)
 - Réponses de la FAQ marquées « à compléter » : tarifs indicatifs, délai de réservation conseillé
-- Avant la mise en ligne réelle : retirer `<meta name="robots" content="noindex">` dans chaque page
+- Avant la mise en ligne réelle : retirer `<meta name="robots" content="noindex">` dans chaque page et l’en-tête `X-Robots-Tag` de `vercel.json`
 
 ## Images
 
