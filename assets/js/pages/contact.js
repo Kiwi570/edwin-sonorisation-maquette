@@ -1,8 +1,8 @@
 // Contact (Face D) : table de mixage, devis « Construisez votre set », horaires, zone
-import { state, $, $$, SITE } from '../core/state.js';
-import { simpleHero } from '../core/hero-simple.js';
-import { initZoneBlock, communeCombobox, describe, loadZoneData } from '../core/zonemap.js';
-import { audio } from '../core/audio.js';
+import { state, $, $$, SITE } from '../core/state.js?v=20261027';
+import { simpleHero } from '../core/hero-simple.js?v=20261027';
+import { initZoneBlock, communeCombobox, describe, loadZoneData } from '../core/zonemap.js?v=20261027';
+import { audio } from '../core/audio.js?v=20261027';
 
 export default function contact() {
   const { gsap } = window;

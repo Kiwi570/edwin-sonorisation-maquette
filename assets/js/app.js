@@ -1,11 +1,11 @@
 // Point d'entrée commun à toutes les pages
-import { state, initMoodFromSession, emit, $ } from './core/state.js';
-import { initHours } from './core/hours.js';
-import { initSmooth, initAnchors, scrollToTarget } from './core/smooth.js';
-import { initDeck } from './core/deck.js';
-import { initGrain, initHeader, initMenu, initCursor, initMagnetic, initTilt, initTonearm, initWave, initLightbox } from './core/ui.js';
-import { runLoader, initTransitions, arrive, initReveal } from './core/intro.js';
-import { initPlaceholders } from './core/placeholders.js';
+import { state, initMoodFromSession, emit, $ } from './core/state.js?v=20261027';
+import { initHours } from './core/hours.js?v=20261027';
+import { initSmooth, initAnchors, scrollToTarget } from './core/smooth.js?v=20261027';
+import { initDeck } from './core/deck.js?v=20261027';
+import { initGrain, initHeader, initMenu, initCursor, initMagnetic, initTilt, initTonearm, initWave, initLightbox } from './core/ui.js?v=20261027';
+import { runLoader, initTransitions, arrive, initReveal } from './core/intro.js?v=20261027';
+import { initPlaceholders } from './core/placeholders.js?v=20261027';
 
 const html = document.documentElement;
 const PAGES = ['home', 'prestations', 'livre', 'contact', 'legal', 'e404'];

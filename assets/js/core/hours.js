@@ -1,5 +1,5 @@
 // « Joignable maintenant » : calculé à l'heure de Paris à partir des disponibilités publiées
-import { SITE, $$ } from './state.js';
+import { SITE, $$ } from './state.js?v=20261027';
 
 const DAYS = ['', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
 const WD = { Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6, Sun: 7 };

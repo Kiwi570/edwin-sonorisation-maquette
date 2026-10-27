@@ -1,7 +1,7 @@
 // Prestations (Face B)
-import { state, on, $, $$ } from '../core/state.js';
-import { initAnimToys } from '../core/anims.js';
-import { initStrip } from '../core/strip.js';
+import { state, on, $, $$ } from '../core/state.js?v=20261027';
+import { initAnimToys } from '../core/anims.js?v=20261027';
+import { initStrip } from '../core/strip.js?v=20261027';
 
 export default function prestations() {
   const { gsap, ScrollTrigger } = window;
