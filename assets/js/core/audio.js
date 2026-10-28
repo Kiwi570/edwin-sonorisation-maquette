@@ -1,6 +1,6 @@
 // Son démo : boucles originales synthétisées dans le navigateur (Web Audio), une par ambiance.
 // Rien n'est chargé, rien n'est joué sans action du visiteur.
-import { state, emit, MOODS } from './state.js?v=20261028';
+import { state, emit, MOODS } from './state.js?v=20261028-2';
 
 const N = (n) => 440 * Math.pow(2, (n - 69) / 12); // MIDI → Hz
 

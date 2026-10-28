@@ -1,6 +1,6 @@
 // Défilement fluide (Lenis) relié à ScrollTrigger
 import { Lenis } from '../vendor/lenis.esm.js';
-import { state } from './state.js?v=20261028';
+import { state } from './state.js?v=20261028-2';
 
 export function initSmooth() {
   const { gsap, ScrollTrigger } = window;

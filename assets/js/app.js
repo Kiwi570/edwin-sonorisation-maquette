@@ -1,10 +1,10 @@
 // Point d'entrée commun à toutes les pages
-import { state, initMoodFromSession, emit, $, store } from './core/state.js?v=20261028';
-import { initHours } from './core/hours.js?v=20261028';
-import { initSmooth, initAnchors, scrollToTarget } from './core/smooth.js?v=20261028';
-import { initDeck } from './core/deck.js?v=20261028';
-import { initGrain, initHeader, initMenu, initCursor, initMagnetic, initTilt, initTonearm, initWave, initLightbox } from './core/ui.js?v=20261028';
-import { runLoader, initTransitions, arrive, initReveal } from './core/intro.js?v=20261028';
+import { state, initMoodFromSession, emit, $, store } from './core/state.js?v=20261028-2';
+import { initHours } from './core/hours.js?v=20261028-2';
+import { initSmooth, initAnchors, scrollToTarget } from './core/smooth.js?v=20261028-2';
+import { initDeck } from './core/deck.js?v=20261028-2';
+import { initGrain, initMeasures, initDeckAway, initHeader, initMenu, initCursor, initMagnetic, initTilt, initTonearm, initWave, initLightbox } from './core/ui.js?v=20261028-2';
+import { runLoader, initTransitions, arrive, initReveal } from './core/intro.js?v=20261028-2';
 
 const html = document.documentElement;
 const PAGES = ['home', 'prestations', 'livre', 'contact', 'legal', 'e404'];
@@ -37,15 +37,17 @@ async function boot() {
 
   initMoodFromSession();
   initGrain();
-  if (document.querySelector('[data-ph]')) import('./core/placeholders.js?v=20261028').then((m) => m.initPlaceholders());
+  if (document.querySelector('[data-ph]')) import('./core/placeholders.js?v=20261028-2').then((m) => m.initPlaceholders());
   // Liens « Devis » préremplis : le type d'événement suit le visiteur jusqu'au formulaire
   document.addEventListener('click', (e) => { const a = e.target.closest('[data-prefill]'); if (a) store.set('sono-prefill', a.dataset.prefill, true); }, true);
   initHours();
+  initMeasures();
   initHeader();
   initMenu();
   initSmooth();
   initAnchors();
   initDeck();
+  initDeckAway();
   initCursor();
   initMagnetic();
   initTilt();
@@ -55,7 +57,7 @@ async function boot() {
   initTransitions();
 
   if (PAGES.includes(state.page)) {
-    try { const mod = await import(`./pages/${state.page}.js`); await mod.default?.(); }
+    try { const mod = await import(`./pages/${state.page}.js?v=20261028-2`); await mod.default?.(); }
     catch (e) { console.error('[page]', e); }
   }
 

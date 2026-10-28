@@ -1,5 +1,5 @@
 // Prestations (Face B)
-import { state, on, $, $$ } from '../core/state.js?v=20261028';
+import { state, on, $, $$ } from '../core/state.js?v=20261028-2';
 
 export default function prestations() {
   const { gsap, ScrollTrigger } = window;

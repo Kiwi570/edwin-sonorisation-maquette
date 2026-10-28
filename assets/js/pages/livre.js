@@ -1,7 +1,7 @@
 // Livre d'or (Face C)
-import { state, $ } from '../core/state.js?v=20261028';
-import { initStrip } from '../core/strip.js?v=20261028';
-import { simpleHero } from '../core/hero-simple.js?v=20261028';
+import { state, $ } from '../core/state.js?v=20261028-2';
+import { initStrip } from '../core/strip.js?v=20261028-2';
+import { simpleHero } from '../core/hero-simple.js?v=20261028-2';
 
 export default function livre() {
   const { gsap } = window;

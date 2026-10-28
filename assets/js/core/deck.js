@@ -1,7 +1,7 @@
 // Barre « deck » : son démo, mode calme, crossfader de progression + horloge musicale partagée
-import { state, emit, on, $, $$, store, MOODS } from './state.js?v=20261028';
-import { audio } from './audio.js?v=20261028';
-import { scrollProgress } from './smooth.js?v=20261028';
+import { state, emit, on, $, $$, store, MOODS } from './state.js?v=20261028-2';
+import { audio } from './audio.js?v=20261028-2';
+import { scrollProgress } from './smooth.js?v=20261028-2';
 
 let hintTimer = null;
 export function hint(text, ms = 3200) {

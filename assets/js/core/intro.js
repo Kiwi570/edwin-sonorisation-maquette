@@ -1,5 +1,5 @@
 // Ouverture (loader « l'aiguille se pose »), transitions de page « balayage laser », révélations au défilement
-import { state, $, $$, store, emit } from './state.js?v=20261028';
+import { state, $, $$, store, emit } from './state.js?v=20261028-2';
 
 const FACES = { 'index.html': 'Face A · Accueil', '': 'Face A · Accueil', 'prestations.html': 'Face B · Prestations', 'prestations': 'Face B · Prestations',
   'livre-d-or.html': 'Face C · Livre d’or', 'livre-d-or': 'Face C · Livre d’or', 'contact.html': 'Face D · Contact', 'contact': 'Face D · Contact',

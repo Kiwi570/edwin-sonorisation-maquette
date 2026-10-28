@@ -1,7 +1,7 @@
 // Vinyle 3D en WebGL (OGL) : disque incliné, sillons, reflet anisotrope, étiquette qui tourne,
 // faisceaux laser dans la brume. Le défilement « scratche » le disque.
 import { Renderer, Program, Mesh, Triangle, Texture } from '../vendor/ogl.esm.js';
-import { state, on, hexToRgb } from '../core/state.js?v=20261028';
+import { state, on, hexToRgb } from '../core/state.js?v=20261028-2';
 
 const vertex = /* glsl */ `#version 300 es
 in vec2 uv; in vec2 position; out vec2 vUv;

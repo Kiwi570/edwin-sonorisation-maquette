@@ -1,5 +1,5 @@
 // Visuels provisoires dessinés en code (en attendant les images Grok). Jamais de cadre vide.
-import { $$, hexToRgb } from './state.js?v=20261028';
+import { $$, hexToRgb } from './state.js?v=20261028-2';
 
 const TAU = Math.PI * 2;
 function rng(seed) { let s = (seed * 2654435761) >>> 0 || 1; return () => { s ^= s << 13; s >>>= 0; s ^= s >> 17; s ^= s << 5; s >>>= 0; return s / 4294967296; }; }

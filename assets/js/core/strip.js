@@ -1,5 +1,5 @@
 // Bande de photos horizontale : glisser à la souris, inertie douce
-import { $$, state } from './state.js?v=20261028';
+import { $$, state } from './state.js?v=20261028-2';
 
 export function initStrip() {
   $$('[data-strip]').forEach((strip) => {

@@ -1,6 +1,6 @@
 // Mini-jeux des cartes « Animations » (karaoké, chaises musicales, buzzer de quiz)
-import { state, $, $$ } from './state.js?v=20261028';
-import { audio } from './audio.js?v=20261028';
+import { state, $, $$ } from './state.js?v=20261028-2';
+import { audio } from './audio.js?v=20261028-2';
 
 export function initAnimToys(root = document) {
   const { gsap, ScrollTrigger } = window;

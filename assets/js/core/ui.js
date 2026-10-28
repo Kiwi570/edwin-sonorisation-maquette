@@ -1,6 +1,6 @@
 // En-tête, menu, curseur, boutons magnétiques, cartes 3D, bras de lecture, grain, onde au survol
-import { state, $, $$ } from './state.js?v=20261028';
-import { scrollProgress } from './smooth.js?v=20261028';
+import { state, $, $$ } from './state.js?v=20261028-2';
+import { scrollProgress } from './smooth.js?v=20261028-2';
 
 export function initGrain() {
   const c = document.createElement('canvas'); c.width = c.height = 160;
@@ -8,6 +8,31 @@ export function initGrain() {
   for (let i = 0; i < img.data.length; i += 4) { const v = Math.random() * 255; img.data[i] = img.data[i + 1] = img.data[i + 2] = v; img.data[i + 3] = 255; }
   ctx.putImageData(img, 0, 0);
   document.documentElement.style.setProperty('--grain-url', `url(${c.toDataURL('image/png')})`);
+}
+
+// Hauteurs réelles de l'en-tête et du lecteur du bas (--entete-h, --barres-h) pour les sections qui tiennent dans l'écran
+export function initMeasures() {
+  const root = document.documentElement;
+  const header = $('[data-header]'); const deck = $('[data-deck]');
+  const set = () => {
+    if (header) root.style.setProperty('--entete-h', `${header.offsetHeight}px`);
+    if (deck) root.style.setProperty('--barres-h', `${Math.round(deck.offsetHeight + (parseFloat(getComputedStyle(deck).bottom) || 0))}px`);
+  };
+  set();
+  if ('ResizeObserver' in window) { const ro = new ResizeObserver(set); [header, deck].forEach((el) => el && ro.observe(el)); }
+  window.addEventListener('resize', set);
+}
+
+// Téléphone : la barre du bas s'efface quand le devis ou le pied de page est à l'écran
+export function initDeckAway() {
+  const deck = $('[data-deck]'); const zones = $$('#devis, .footer');
+  if (!deck || !zones.length || !('IntersectionObserver' in window)) return;
+  const seen = new Set();
+  const io = new IntersectionObserver((ents) => {
+    ents.forEach((e) => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)));
+    deck.classList.toggle('is-away', seen.size > 0);
+  });
+  zones.forEach((z) => io.observe(z));
 }
 
 export function initHeader() {

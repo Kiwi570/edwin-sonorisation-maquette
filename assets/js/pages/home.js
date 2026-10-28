@@ -1,8 +1,8 @@
 // Accueil (Face A)
-import { state, on, $, $$, setMood, MOODS } from '../core/state.js?v=20261028';
-import { setSound, audio } from '../core/deck.js?v=20261028';
-import { initZoneBlock } from '../core/zonemap.js?v=20261028';
-import { initAnimToys } from '../core/anims.js?v=20261028';
+import { state, on, $, $$, setMood, MOODS } from '../core/state.js?v=20261028-2';
+import { setSound, audio } from '../core/deck.js?v=20261028-2';
+import { initZoneBlock } from '../core/zonemap.js?v=20261028-2';
+import { initAnimToys } from '../core/anims.js?v=20261028-2';
 
 export default function home() {
   const { gsap, ScrollTrigger } = window;
@@ -17,7 +17,7 @@ export default function home() {
   if (!state.calm) {
     gsap.set(lines, { yPercent: 110 });
     gsap.set([kicker, ...fades], { opacity: 0, y: 24 });
-    import('../gl/vinyl.js?v=20261028').then(({ initVinyl }) => {
+    import('../gl/vinyl.js?v=20261028-2').then(({ initVinyl }) => {
       vinyl = initVinyl($('[data-vinyl-gl]', hero));
       if (!vinyl) startFallbackSpin();
       if (introDone && vinyl) vinyl.intro(0);
@@ -66,10 +66,9 @@ export default function home() {
     mm.add('(min-width: 900px)', () => {
       evSec.classList.add('is-pinned');
       const dist = () => track.scrollWidth - window.innerWidth;
-      // Toute la section reste épinglée (titre visible) ; le défilement est raccourci d'un tiers
-      const fits = () => evSec.offsetHeight <= window.innerHeight;
+      // Toute la section reste épinglée (titre visible) : elle fait la hauteur de l'écran (CSS), le défilement est raccourci d'un tiers
       const tween = gsap.to(track, { x: () => -dist(), ease: 'none', scrollTrigger: {
-        trigger: evSec, start: () => (fits() ? 'top top' : 'bottom bottom'), end: () => `+=${Math.round(dist() * 0.65)}`, pin: true, scrub: 0.6, invalidateOnRefresh: true, anticipatePin: 1,
+        trigger: evSec, start: 'top top', end: () => `+=${Math.round(dist() * 0.65)}`, pin: true, scrub: 0.6, invalidateOnRefresh: true,
         onUpdate: (st) => setCount(st.progress),
       } });
       evs.forEach((ev) => {
