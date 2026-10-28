@@ -1,5 +1,5 @@
 // 404 « Disque rayé » : le disque saute comme un sillon rayé
-import { state, $ } from '../core/state.js?v=20261027c';
+import { state, $ } from '../core/state.js?v=20261028';
 export default function e404() {
   const { gsap } = window;
   const v = $('[data-scratch]');

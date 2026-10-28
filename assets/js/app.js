@@ -1,10 +1,10 @@
 // Point d'entrée commun à toutes les pages
-import { state, initMoodFromSession, emit, $, store } from './core/state.js?v=20261027c';
-import { initHours } from './core/hours.js?v=20261027c';
-import { initSmooth, initAnchors, scrollToTarget } from './core/smooth.js?v=20261027c';
-import { initDeck } from './core/deck.js?v=20261027c';
-import { initGrain, initHeader, initMenu, initCursor, initMagnetic, initTilt, initTonearm, initWave, initLightbox } from './core/ui.js?v=20261027c';
-import { runLoader, initTransitions, arrive, initReveal } from './core/intro.js?v=20261027c';
+import { state, initMoodFromSession, emit, $, store } from './core/state.js?v=20261028';
+import { initHours } from './core/hours.js?v=20261028';
+import { initSmooth, initAnchors, scrollToTarget } from './core/smooth.js?v=20261028';
+import { initDeck } from './core/deck.js?v=20261028';
+import { initGrain, initHeader, initMenu, initCursor, initMagnetic, initTilt, initTonearm, initWave, initLightbox } from './core/ui.js?v=20261028';
+import { runLoader, initTransitions, arrive, initReveal } from './core/intro.js?v=20261028';
 
 const html = document.documentElement;
 const PAGES = ['home', 'prestations', 'livre', 'contact', 'legal', 'e404'];
@@ -37,7 +37,7 @@ async function boot() {
 
   initMoodFromSession();
   initGrain();
-  if (document.querySelector('[data-ph]')) import('./core/placeholders.js?v=20261027c').then((m) => m.initPlaceholders());
+  if (document.querySelector('[data-ph]')) import('./core/placeholders.js?v=20261028').then((m) => m.initPlaceholders());
   // Liens « Devis » préremplis : le type d'événement suit le visiteur jusqu'au formulaire
   document.addEventListener('click', (e) => { const a = e.target.closest('[data-prefill]'); if (a) store.set('sono-prefill', a.dataset.prefill, true); }, true);
   initHours();
